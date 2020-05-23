@@ -1,11 +1,11 @@
 <template>
     <div class="header">
-        <span>Best University</span>
+        <span><router-link to="/">Best University</router-link></span>
         <nav>
             <ul>
-                <li>Заказать экскурсию</li>
-                <li>Топ институтов</li>
-                <li>Регистрация</li>
+                <li><router-link to="/excursion">Заказать экскурсию</router-link></li>
+                <li><router-link to="/top">Топ институтов</router-link></li>
+                <li><router-link to="/auth">Регистрация</router-link></li>    
             </ul>
         </nav>
     </div>
