@@ -1,18 +1,26 @@
 <template>
   <div id="app">
     <Header />
-    <!-- выводим на экран контент роутера -->
-    <router-view/> 
+    <main>
+      <Sidebar />
+      <Content />
+    </main>
+
+     
   </div>
 </template>
 
 <script>
   import Header from '@/components/Header.vue'
+  import Sidebar from '@/components/Sidebar.vue'
+  import Content from '@/components/Content.vue'
 
   export default {
     name: 'App',
     components: {
-      Header
+      Header,
+      Sidebar,
+      Content
     }
   }
 </script>

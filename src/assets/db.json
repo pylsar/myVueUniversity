@@ -1,0 +1,19 @@
+{
+    "universities": [
+    {
+        "id": 1,
+        "title": "МГУ",
+        "price": "2000",
+        "img": "boots.jpg",
+        "longDescr": "МГУ описание"
+    },
+    {
+        "id": 2,
+        "title": "Стенфорд",
+        "price": "7000",
+        "img": "boots.jpg",
+        "longDescr": "Стенфорд описание"
+    }
+    
+]
+}

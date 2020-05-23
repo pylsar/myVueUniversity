@@ -1,5 +1,10 @@
 # my-vue-university
 
+
+
+*  npm run serve
+*  json-server ./src/assets/db.json --watch --port 3001
+
 ## Project setup
 ```
 npm install
