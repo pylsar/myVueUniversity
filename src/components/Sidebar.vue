@@ -15,7 +15,6 @@
 <script>
 
     export default {
-
         name: 'Sidebar',
         data() {
             return {
@@ -25,11 +24,9 @@
         
         mounted(){
         this.$axios.get('http://localhost:3001/universities')
-            .then(response => (this.universities = response));
+            .then(response => (this.universities = response.data));
             // .then(response => (console.log(response)));
         }
-        
-
     }
 </script>
 
