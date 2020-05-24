@@ -15,19 +15,21 @@
 <script>
 
     export default {
-        import axios from 'axios';
 
         name: 'Sidebar',
         data() {
             return {
-            university: null
+            universities: null
             };
         },
         
         mounted(){
-        axios.get('http://localhost:3001/universities')
-            .then(response => (this.university = response));
+        this.$axios.get('http://localhost:3001/universities')
+            .then(response => (this.universities = response));
+            // .then(response => (console.log(response)));
         }
+        
+
     }
 </script>
 
