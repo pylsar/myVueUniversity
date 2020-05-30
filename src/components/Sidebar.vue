@@ -1,13 +1,7 @@
 <template>
     <div class="sidebar">
         <ul>
-            <!-- <li>МГУ</li>
-            <li>Стенфорд</li>
-            <li>Гарвард</li>
-            <li>Калтех</li>
-            <li>Оксфорд</li>
-            <li>Ель</li> -->
-            <li v-for="university in universities" :key="university.id">{{university.title}}</li>
+            <li v-for="university in universities" :key="university.id"><router-link to="`/university/${ university.id }`">{{university.title}}</router-link></li>
         </ul>
     </div>
 </template>
@@ -26,7 +20,8 @@
         this.$axios.get('http://localhost:3001/universities')
             .then(response => (this.universities = response.data));
             // .then(response => (console.log(response)));
-        }
+        },
+
     }
 </script>
 

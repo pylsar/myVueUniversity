@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Top from '../views/Top.vue'
 import Excursion from '../views/Excursion.vue'
 import Auth from '../views/Auth'
+import University from '../views/University'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ Vue.use(VueRouter)
     name: 'Auth',
     component: Auth
   },
+  {
+    path: '/university/:id',
+    name: 'University',
+    component: University,
+  }
 
 ]
 
