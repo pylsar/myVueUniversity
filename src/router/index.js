@@ -33,6 +33,7 @@ Vue.use(VueRouter)
     path: '/university/:id',
     name: 'University',
     component: University,
+    props: true
   }
 
 ]
