@@ -2,18 +2,18 @@
   <div class="content">
     <h1>Content</h1>
     <!-- выводим на экран контент роутера -->
-    <University />
+    <!-- <University /> -->
     <router-view/>
   </div>
 </template>
 
 <script>
-import University from '@/views/University.vue'
+// import University from '@/views/University.vue'
 
 export default {
   name: 'Content',
   components: {
-    University
+    // University
   }
 }
 </script>

@@ -5,6 +5,7 @@
             :key="university.id"
             >
             <router-link :to="{name: 'University', params: {id: university.id }}">{{university.title}}</router-link> 
+            <!-- <router-link :to="'/university/' + university.id">{{university.title}}</router-link>  -->
             </li>
         </ul>
     </div>
@@ -16,6 +17,7 @@
         name: 'Sidebar',
         data() {
             return {
+            // id: this.$route.params.id,
             universities: null
             };
         },
