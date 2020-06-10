@@ -3,8 +3,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Top from '../views/Top.vue'
 import Excursion from '../views/Excursion.vue'
-import Auth from '../views/Auth'
-import University from '../views/University'
+import Auth from '../views/Auth.vue'
+import University from '../views/University.vue'
+import PageNotFound from '../views/PageNotFound.vue'
 
 Vue.use(VueRouter)
 
@@ -34,8 +35,15 @@ Vue.use(VueRouter)
     name: 'University',
     component: University,
     props: true
+  },
+  { 
+    path: '/pagenotfound', 
+    name: 'PageNotFound', 
+    component: PageNotFound, 
+  }, { 
+    path: '*', 
+    redirect: '/pagenotfound' 
   }
-
 ]
 
 const router = new VueRouter({

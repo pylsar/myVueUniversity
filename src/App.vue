@@ -5,8 +5,6 @@
       <Sidebar />
       <Content />
     </main>
-
-     
   </div>
 </template>
 
@@ -20,7 +18,7 @@
     components: {
       Header,
       Sidebar,
-      Content
+      Content,
     }
   }
 </script>
