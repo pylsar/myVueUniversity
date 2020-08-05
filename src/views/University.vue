@@ -1,24 +1,30 @@
 <template>
     <div class="university">
-        <div v-for="university in universities" :key="university.id">
-            <h3>{{university.title}}</h3>
-            <p>{{university.longDescr}}</p>
-        </div>
-        <a href="#">https://www.youtube.com/watch?v=KGFcgnCSS6A&t=1s</a>
+        <h1>University</h1>
+            <h3>{{universities.title}}</h3>
+            <p>{{universities.longDescr}}</p>
     </div>
 </template>
 <script>
+
+// import {mapGetters} from 'vuex'
     export default {
         name: 'University',
         data() {
             return {
-            universities: null
+            // universities: null
+            id: this.$route.params.id,
+            universities: {}
             };
         },
-        mounted(){
-        this.$axios.get('http://localhost:3001/universities')
-            .then(response => (this.universities = response.data));
-            // .then(response => (console.log(response)));
+        //  computed:{
+        // ...mapGetters([
+        //     'UNIVERSITIES'
+        // ]),
+        created(){
+        this.$axios.get('http://localhost:3001/universities/' + this.id)
+            .then(response => (this.universities = response.data))
+            .then(response => (console.log(response)));
         },
     }
 </script>

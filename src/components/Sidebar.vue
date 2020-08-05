@@ -1,31 +1,39 @@
 <template>
     <div class="sidebar">
         <ul>
-            <li v-for="university in universities" 
+            <li v-for="university in UNIVERSITIES" 
             :key="university.id"
             >
-            <router-link :to="{name: 'University', params: {id: university.id }}">{{university.title}}</router-link> 
-            <!-- <router-link :to="'/university/' + university.id">{{university.title}}</router-link>  -->
+            <!-- <router-link :to="{name: 'University', params: {id: university.id }}">{{university.title}}</router-link>  -->
+            <router-link :to="'/university/' + university.id">{{university.title}}</router-link>
             </li>
         </ul>
     </div>
 </template>
 <script>
-
+import {mapActions, mapGetters} from 'vuex'
     export default {
 
         name: 'Sidebar',
         data() {
             return {
-            // id: this.$route.params.id,
-            universities: null
+            id: this.$route.params.id,
+            universities: {}
             };
         },
-        mounted(){
-        this.$axios.get('http://localhost:3001/universities')
-            .then(response => (this.universities = response.data));
-            // .then(response => (console.log(response)));
-        },
+        computed:{
+        ...mapGetters([
+            'UNIVERSITIES'
+        ])
+    },
+    methods:{
+        ...mapActions([
+            'GET_UNIVERSITIES_FROM_API',
+        ]),
+    },
+    mounted(){
+        this.GET_UNIVERSITIES_FROM_API()
+    }
 
     }
 </script>
