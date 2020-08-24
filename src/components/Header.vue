@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <span><router-link to="/">Best University</router-link></span>
-        <nav>
+        <nav class="header__navigation">
             <ul>
                 <li><router-link to="/excursion">Заказать экскурсию</router-link></li>
                 <li><router-link to="/top">Топ институтов</router-link></li>
@@ -26,7 +26,7 @@
         justify-content: space-between;
         align-items: center;
         background: skyblue;
-        & nav {
+        &__navigation {
             & ul{
                 width: 70vw;
                 display: flex;

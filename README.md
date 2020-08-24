@@ -1,14 +1,17 @@
 # my-vue-university
 
-
-
 *  npm run serve
 *  json-server ./src/assets/db.json --watch --port 3001
 
-## Project setup
-```
-npm install
-```
+## Технологии которые мспользую в проекте:
+    * Vue.js
+    * Vuex
+    * Vue-router
+    * json-server
+    * axios
+    * SCSS
+    * БЭМ
+
 
 ### Compiles and hot-reloads for development
 ```

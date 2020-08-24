@@ -13,24 +13,23 @@ import {mapGetters, mapActions} from 'vuex'
             return {
             };
         },
-
        computed:{
-    ...mapGetters([
-        'UNIVERSITIES'
-    ]),
-    university() {
-            //необходимо привести к числу
-        return this.$store.getters.universityById(+this.$route.params.id);
-        }
-    },
-    methods:{
-        ...mapActions([
-            'GET_UNIVERSITIES_FROM_API',
+        ...mapGetters([
+            'UNIVERSITIES'
         ]),
-    },
-    mounted(){
-        this.GET_UNIVERSITIES_FROM_API()
-    },       
+        university() {
+                //необходимо привести к числу
+            return this.$store.getters.universityById(+this.$route.params.id);
+            }
+        },
+        methods:{
+            ...mapActions([
+                'GET_UNIVERSITIES_FROM_API',
+            ]),
+        },
+        mounted(){
+            this.GET_UNIVERSITIES_FROM_API()
+        },       
        
     }
 </script>
