@@ -1,31 +1,37 @@
 <template>
     <div class="university">
         <h1>University</h1>
-            <h3>{{universities.title}}</h3>
-            <p>{{universities.longDescr}}</p>
+            <h3>{{university.title}}</h3>
+            <p>{{university.longDescr}}</p>
     </div>
 </template>
 <script>
-
-// import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
     export default {
         name: 'University',
         data() {
             return {
-            // universities: null
-            id: this.$route.params.id,
-            universities: {}
             };
         },
-        //  computed:{
-        // ...mapGetters([
-        //     'UNIVERSITIES'
-        // ]),
-        created(){
-        this.$axios.get('http://localhost:3001/universities/' + this.id)
-            .then(response => (this.universities = response.data))
-            .then(response => (console.log(response)));
-        },
+
+       computed:{
+    ...mapGetters([
+        'UNIVERSITIES'
+    ]),
+    university() {
+            //необходимо привести к числу
+        return this.$store.getters.universityById(+this.$route.params.id);
+        }
+    },
+    methods:{
+        ...mapActions([
+            'GET_UNIVERSITIES_FROM_API',
+        ]),
+    },
+    mounted(){
+        this.GET_UNIVERSITIES_FROM_API()
+    },       
+       
     }
 </script>
 

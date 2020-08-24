@@ -4,7 +4,6 @@
             <li v-for="university in UNIVERSITIES" 
             :key="university.id"
             >
-            <!-- <router-link :to="{name: 'University', params: {id: university.id }}">{{university.title}}</router-link>  -->
             <router-link :to="'/university/' + university.id">{{university.title}}</router-link>
             </li>
         </ul>
@@ -14,17 +13,15 @@
 import {mapActions, mapGetters} from 'vuex'
     export default {
 
-        name: 'Sidebar',
-        data() {
-            return {
-            id: this.$route.params.id,
-            universities: {}
-            };
-        },
-        computed:{
-        ...mapGetters([
-            'UNIVERSITIES'
-        ])
+    name: 'Sidebar',
+    data() {
+        return {
+        };
+    },
+    computed:{
+    ...mapGetters([
+        'UNIVERSITIES'
+    ]),
     },
     methods:{
         ...mapActions([
@@ -33,7 +30,7 @@ import {mapActions, mapGetters} from 'vuex'
     },
     mounted(){
         this.GET_UNIVERSITIES_FROM_API()
-    }
+    },
 
     }
 </script>

@@ -32,6 +32,7 @@ export default new Vuex.Store({
     UNIVERSITIES(state){
       return state.universities
     },
+    universityById: (state) => (id) => state.universities.find((university) => university.id === id)
   },
   modules: {
   }
