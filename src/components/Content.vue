@@ -1,6 +1,5 @@
 <template>
   <div class="content">
-    <h1>Content</h1>
     <!-- выводим на экран контент роутера -->
     <router-view/>
   </div>
