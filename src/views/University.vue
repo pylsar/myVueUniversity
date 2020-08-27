@@ -1,8 +1,8 @@
 <template>
     <div class="university">
-        <h1>University</h1>
-            <h3>{{university.title}}</h3>
-            <p>{{university.longDescr}}</p>
+        <h1>{{university.title}}</h1>
+        <!-- <img src="require('../assets/img/' + university.img)" alt=""> -->
+        <p>{{university.longDescr}}</p>
     </div>
 </template>
 <script>
@@ -11,6 +11,9 @@ import {mapGetters, mapActions} from 'vuex'
         name: 'University',
         data() {
             return {
+                // photos: [
+                //     {image: require('@/assets/mgy.jpg')},
+                // ]
             };
         },
        computed:{
