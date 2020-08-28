@@ -1,7 +1,7 @@
 <template>
     <div class="university">
         <h1>{{university.title}}</h1>
-        <!-- <img src="require('../assets/img/' + university.img)" alt=""> -->
+        <img class="university--img" :src="require('../assets/img/' + university.img)" alt="university.title" />
         <p>{{university.longDescr}}</p>
     </div>
 </template>
@@ -11,9 +11,6 @@ import {mapGetters, mapActions} from 'vuex'
         name: 'University',
         data() {
             return {
-                // photos: [
-                //     {image: require('@/assets/mgy.jpg')},
-                // ]
             };
         },
        computed:{
@@ -37,3 +34,16 @@ import {mapGetters, mapActions} from 'vuex'
     }
 </script>
 
+<style lang="scss">
+    .university{
+        & h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        &--img {
+            max-width: 400px;
+            display: block;
+            margin: 20px auto;
+        }
+    }
+</style>
