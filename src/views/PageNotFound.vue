@@ -38,7 +38,7 @@
     }
 </script>
 <style lang="scss" scoped>
-    
+
     .pageNotFound {
         & h2{
             text-align: center;
