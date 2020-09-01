@@ -2,9 +2,22 @@
     <div class="university">
         <h1>{{university.title}}</h1>
         <div class="university__box">
-            <span @click="excursionRedirect">Заказать экскурсию</span>
-            <img class="university__box--img" :src="require('../assets/img/' + university.img)" alt="university.title" />
-            <span>Галерея</span>
+            <div class="university__box__excursion">
+                <span @click="excursionRedirect">Заказать экскурсию</span>
+            </div>
+            <div class="university__box__img">
+                <img  :src="require('../assets/img/' + university.img)" alt="university.title" />
+            </div>
+            <div class="university__box__gallery">
+                <div class="university__box__gallery__items">
+                    <img :src="require('../assets/img/' + university.gallary1)" alt="university.title" />
+                    <img :src="require('../assets/img/' + university.gallary2)" alt="university.title" />
+                </div>
+                <div class="university__box__gallery__items">
+                    <img :src="require('../assets/img/' + university.gallary3)" alt="university.title" />
+                    <img :src="require('../assets/img/' + university.gallary4)" alt="university.title" />
+                </div>
+            </div>
         </div>
         <p>{{university.longDescr}}</p>
     </div>
@@ -50,11 +63,38 @@ import {mapGetters, mapActions} from 'vuex'
         &__box {
             display: flex;
             align-items: center;
-            
-            &--img {
-            max-width: 400px;
-            display: block;
-            margin: 20px auto;
+            justify-content: center;
+                border:1px solid pink;
+            &__excursion, &__img, &__gallery{
+                width: 33%;
+                display: flex;
+                justify-content: center;
+            }
+            &__excursion{
+                border: 1px solid orange;
+            }
+            &__img {
+                border: 1px solid blue;
+                & img {
+                max-width: 100%;
+                }
+            }
+            &__gallery {
+                display: flex;
+                flex-direction: column;
+                border: 1px solid red;
+                &__items{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid green;
+                    & img {
+                        max-width: 50%;
+                        cursor: pointer;    
+                    }    
+                }
+                
             }
         }
         
