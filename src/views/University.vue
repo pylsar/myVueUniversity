@@ -8,16 +8,7 @@
             <div class="university__box__img">
                 <img  :src="require('../assets/img/' + university.img)" alt="university.title" />
             </div>
-            <div class="university__box__gallery">
-                <div class="university__box__gallery__items">
-                    <img :src="require('../assets/img/' + university.gallary1)" alt="university.title" />
-                    <img :src="require('../assets/img/' + university.gallary2)" alt="university.title" />
-                </div>
-                <div class="university__box__gallery__items">
-                    <img :src="require('../assets/img/' + university.gallary3)" alt="university.title" />
-                    <img :src="require('../assets/img/' + university.gallary4)" alt="university.title" />
-                </div>
-            </div>
+            
         </div>
         <p>{{university.longDescr}}</p>
     </div>
@@ -79,23 +70,7 @@ import {mapGetters, mapActions} from 'vuex'
                 max-width: 100%;
                 }
             }
-            &__gallery {
-                display: flex;
-                flex-direction: column;
-                border: 1px solid red;
-                &__items{
-                    width: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    border: 1px solid green;
-                    & img {
-                        max-width: 50%;
-                        cursor: pointer;    
-                    }    
-                }
-                
-            }
+            
         }
         
     }

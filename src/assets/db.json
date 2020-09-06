@@ -5,11 +5,7 @@
         "title": "МГУ",
         "price": "2000",
         "img": "mgy.jpg",
-        "longDescr": "МГУ описание",
-        "gallary1": "mgy1.jpg",
-        "gallary2": "mgy2.jpg",
-        "gallary3": "mgy3.jpg",
-        "gallary4": "mgy4.jpg"
+        "longDescr": "МГУ описание"
     },
     {
         "id": 2,

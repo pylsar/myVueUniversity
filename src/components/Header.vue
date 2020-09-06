@@ -5,6 +5,7 @@
             <ul>
                 <li><router-link to="/excursion">Заказать экскурсию</router-link></li>
                 <li><router-link to="/top">Топ институтов</router-link></li>
+                <li><router-link to="/gallary">Галерея</router-link></li>
                 <li><router-link to="/auth">Регистрация</router-link></li>    
             </ul>
         </nav>
