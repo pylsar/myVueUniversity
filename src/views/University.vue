@@ -2,11 +2,20 @@
     <div class="university">
         <h1>{{university.title}}</h1>
         <div class="university__box">
-            <div class="university__box__excursion">
-                <span @click="excursionRedirect">Заказать экскурсию</span>
+            <div class="university__box__item">
+                <div class="university__box__item--link">
+                    <!-- ? -->
+                    <span @click="excursionRedirect">Заказать экскурсию</span>
+                </div>
+                <div class="university__box__item--link">
+                    <!-- ? -->
+                    <span @click="commentsRedirect">Комментарии</span>
+                </div>
             </div>
-            <div class="university__box__img">
+            <div class="university__box__item">
+                <div class="university__box__item--img">
                 <img  :src="require('../assets/img/' + university.img)" alt="university.title" />
+                </div>
             </div>
             
         </div>
@@ -55,22 +64,21 @@ import {mapGetters, mapActions} from 'vuex'
             display: flex;
             align-items: center;
             justify-content: center;
-                border:1px solid pink;
-            &__excursion, &__img, &__gallery{
-                width: 33%;
+            border:1px solid pink;
+            &__item{
+                width: 50%;
                 display: flex;
                 justify-content: center;
-            }
-            &__excursion{
-                border: 1px solid orange;
-            }
-            &__img {
-                border: 1px solid blue;
-                & img {
-                max-width: 100%;
+                &--link{
+                    border: 1px solid orange;
                 }
+                &--img {
+                    border: 1px solid blue;
+                        & img {
+                        max-width: 100%;
+                    }
+                }    
             }
-            
         }
         
     }

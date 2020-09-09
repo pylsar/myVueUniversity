@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Top from '../views/Top.vue'
 import Excursion from '../views/Excursion.vue'
 import Gallary from '../views/Gallary.vue'
+import Comments from '../views/Comments.vue'
 import Auth from '../views/Auth.vue'
 import University from '../views/University.vue'
 import PageNotFound from '../views/PageNotFound.vue'
@@ -30,6 +31,11 @@ Vue.use(VueRouter)
     path: '/gallary',
     name: 'Gallary',
     component: Gallary
+  },
+  {
+    path: '/comments',
+    name: 'Comments',
+    component: Comments
   },
   {
     path: '/auth',
