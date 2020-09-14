@@ -3,7 +3,7 @@
         <h1>{{university.title}}</h1>
         <div class="university__box">
             <div class="university__box__item university__box__left">
-                <div class="university__box__item--summary" @click="showPopup">click</div>
+                <div class="university__box__item--summary" @click="showPopup">?</div>
                 <div class="university__box__item__link">
                     <router-link to='/excursion'>Заказать экскурсию</router-link>
                 </div>
@@ -21,7 +21,17 @@
             </div>
         </div>
         <p>{{university.longDescr}}</p>
-        <div v-show="popupShow">{{university.title}}</div>
+        <div v-if="popupShow" @click="closeUniversityPopup" class="university__darkLay"></div>
+        <div class=university__popup v-show="popupShow">
+            <h4 class="university__popup--title">{{university.title}}</h4>
+            <div class="university__popup__body">
+                <p>Год основания: <strong>{{university.since}}</strong></p>
+                <p>Кем основан: <strong>{{university.father}}</strong></p>
+                <p>Позиция в рейтинге: <strong>{{topNumber}}</strong></p>
+            </div>
+            
+            <span @click="closeUniversityPopup" class="university__popup--close">&times;</span>
+        </div>
     </div>
 </template>
 <script>
@@ -46,11 +56,11 @@ import {mapGetters, mapActions} from 'vuex'
             ...mapActions([
                 'GET_UNIVERSITIES_FROM_API',
             ]),
-            // excursionRedirect(){
-            //     this.$router.push({ name: 'Excursion' })
-            // },
             showPopup(){
                 this.popupShow = !this.popupShow
+            },
+            closeUniversityPopup(){
+                this.popupShow = false;
             }
         },
         mounted(){
@@ -91,6 +101,10 @@ import {mapGetters, mapActions} from 'vuex'
                     position: absolute;
                     top: 0;
                     left: 0;
+                    cursor: pointer;
+                    background: lightgray;
+                    padding: 10px;
+                    font-weight: bold;
                 }
                 &--img {
                     border: 1px solid blue;
@@ -106,6 +120,47 @@ import {mapGetters, mapActions} from 'vuex'
                 align-items: center;
                 width: 50%;
             }
+        }
+        &__popup{
+            width: 50vw;
+            height: 50vh;
+            background: lightgray;
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            &--title {
+                text-align: center;
+                margin: 20px 0px;
+            }
+            &__body {
+                display: flex;
+                flex-direction: column;
+                & p {
+                    margin-bottom: 20px;
+                    padding-left: 10px;
+                }
+            }
+            &--close {
+                position: absolute;
+                top: 0px;
+                right: 20px;
+                font-size: 50px;
+                font-weight: bold;
+                cursor: pointer;
+                &:hover {
+                    color: green;
+                }
+            }
+        }
+        &__darkLay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: black;
+            opacity: .5;
         }
         
     }

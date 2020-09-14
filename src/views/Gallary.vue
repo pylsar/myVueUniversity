@@ -54,7 +54,7 @@ export default {
         }
         &--name{
             position: absolute;
-            bottom: 0;
+            bottom: -200%;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
