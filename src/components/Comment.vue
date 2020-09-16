@@ -1,0 +1,92 @@
+<template>
+  <div class="comment">
+    <input
+      type="text"
+      class="comment--input"
+      :value="comments[index].title"
+      ref="input"
+      @input="changeComment"
+      :class="{'edit' : !changed}"
+    >
+    <div v-if="btnVisible">
+      <button class="btn--sucsess">Save</button>
+      <button class="btn--warning">Cancel</button>
+    </div>
+    <div class="comment__card">
+      <span>{{comments[index].author}} {{comments[index].date}}</span>
+      <span @click="showSubComment" class="comment__card--close">&times;</span>
+    </div>
+    <div v-if="subComment">
+      <button @click="editComment" class="btn--edit">Edite</button>
+      <button @click="deleteComment" class="btn--warning">Delete</button>
+      <button @click="saveChangeComment" class="btn--success" :disabled="!btnDisabled">Save</button>
+    </div>
+  </div>
+</template>
+<script>
+import { mapGetters, mapActions } from "vuex";
+export default {
+  props: ["index"],
+  name: "Comment",
+  data() {
+    return {
+      btnVisible: false,
+      subComment: false,
+      btnDisabled: false,
+      newComment: "",
+      changed: false
+    };
+  },
+  computed: {
+    ...mapGetters(["comments"])
+  },
+  methods: {
+    showSubComment() {
+      this.subComment = !this.subComment;
+    },
+    editComment() {
+      //курсор падает в инпут
+      this.$nextTick(() => this.$refs.input.focus());
+      this.btnDisabled = true;
+      this.changed = true;
+    },
+    changeComment(event) {
+      this.newComment = event.target.value;
+    },
+    deleteComment() {
+      this.deleteComment(this.index);
+    },
+    saveChangeComment() {
+      if (this.newComment) {
+        this.changeComment([this.index, this.newComment]);
+      }
+    },
+    ...mapActions(["deleteComment"])
+  }
+};
+</script>
+<style scoped lang="scss">
+.comment {
+  &--input {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    margin: 10px 10px 10px 0;
+    background: transparent;
+    height: 30px;
+    font-size: 24px;
+  }
+  &__card{
+    &--close{
+      font-size: 16px;
+      line-height: 1;
+      padding-left: 10px;
+      cursor: pointer;
+    }
+  }
+}
+.edit {
+  caret-color: transparent;
+}
+</style>
+
