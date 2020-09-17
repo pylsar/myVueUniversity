@@ -20,7 +20,7 @@ export default new Vuex.Store({
       state.universities = universities
     },
     addComment: (state, payload) => {
-      this.comments.unshift({
+      state.comments.unshift({
         title: payload,
         author: "Илон Маск",
         date: new Date(Date.now()).toLocaleString()
@@ -29,7 +29,7 @@ export default new Vuex.Store({
     deleteComment(state, payload) {
       state.comments.splice(payload, 1);
     },
-    EDIT_COMMENT(state, [payload]) {
+    editComment(state, [payload]) {
       //разобраться
       Vue.set(state.posts[payload[0]], "title", payload[1]);
     }
@@ -55,8 +55,8 @@ export default new Vuex.Store({
       commit("deleteComment", payload);
     },
     //разобраться
-    EDIT_COMMENT({ commit }, ...payload) {
-      commit("EDIT_COMMENT", payload);
+    editComment({ commit }, ...payload) {
+      commit("editComment", payload);
     }
   },
   getters: {
