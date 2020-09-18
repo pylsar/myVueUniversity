@@ -34,13 +34,14 @@ export default {
       subComment: false,
       btnDisabled: false,
       newComment: "",
-      changed: false
+      changed: false,
     };
   },
   computed: {
     ...mapGetters(["comments"])
   },
   methods: {
+    ...mapActions(["deleteComment"]),
     showSubComment() {
       this.subComment = !this.subComment;
     },
@@ -60,10 +61,24 @@ export default {
       if (this.newComment) {
         this.changeComment([this.index, this.newComment]);
       }
-    },
-    ...mapActions(["deleteComment"])
-  }
-};
+    }
+  },
+  // не работает
+  // mounted() {
+  //   console.log('mounted')
+  //   if (localStorage.getItem("comments")) {
+  //     this.comments = JSON.parse(localStorage.getItem("comments"));
+  //   }
+  // },
+  // watch: {
+  //   comments: {
+  //     handler() {
+  //       localStorage.setItem("comments", JSON.stringify(this.comments));
+  //     }
+  //   }
+  // }  
+  
+}
 </script>
 <style scoped lang="scss">
 .comment {

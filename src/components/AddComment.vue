@@ -39,7 +39,9 @@ export default {
             this.cancel();
         },
 
-    }
+    },
+   
+    
 }
 </script>    
 <style lang="scss">
