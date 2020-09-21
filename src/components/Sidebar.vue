@@ -1,10 +1,12 @@
 <template>
     <div class="sidebar">
         <ul>
-            <li v-for="university in UNIVERSITIES" 
+            <li 
+            v-for="university in UNIVERSITIES" 
             :key="university.id"
+            class="sidebar--items"
             >
-            <router-link :to="'/university/' + university.id">{{university.title}}</router-link>
+            <router-link :to="'/university/' + university.id" tag="a">{{university.title}}</router-link>
             </li>
         </ul>
     </div>
@@ -40,5 +42,17 @@ import {mapActions, mapGetters} from 'vuex'
         width: 200px;
         background: violet;
         height: calc(100vh - 70px);
+        &--items{
+            padding: 0px 10px;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            & a{
+                color: black;
+                &:hover{
+                    opacity: .7;
+                }
+            }
+        }
     }
 </style>
