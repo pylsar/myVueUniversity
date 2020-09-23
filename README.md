@@ -54,3 +54,5 @@
     * [ ] vue sum count sandbox
     * [ ] vue type animation
     * [ ] спиннер
+    * [ ] bugs
+        * [ ] deleteComment сломался

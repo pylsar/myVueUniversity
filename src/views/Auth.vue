@@ -6,30 +6,27 @@
             <div class="auth__box__overlay__left">
               <h2>С возвращением</h2>
               <p>Введите свои даные чтобы зарегестрироваться</p>
-              <button class="invert" id="signIn" @click="toggle">Войти</button>
+              <button id="signIn" @click="toggleAuth">Войти</button>
             </div>
             <div class="auth__box__overlay__right">
               <h2>Приветствуем Вас</h2>
               <p>Введите логин и пароль</p>
-              <button class="invert" id="signUp" @click="toggle">Зарегестрироваться</button>
+              <button id="signUp" @click="toggleAuth">Зарегестрироваться</button>
             </div>
           </div>
         </div>
-        <form class="sign_up" action="#">
-          <h2>Create login</h2>
-          <div>Use your email for registration</div>
+        <form class="auth__form sign_up" action="#">
+          <h2>Создайте Логин</h2>
           <input type="text" placeholder="Name">
           <input type="email" placeholder="Email">
           <input type="password" placeholder="Password">
-          <button>Sign Up</button>
+          <button>Зарегестрироваться</button>
         </form>
-        <form class="sign_in" action="#">
-          <h2>Sign In</h2>
-          <div>Use your acount</div>
+        <form class="auth__form sign_in" action="#">
+          <h2>Войти</h2>
           <input type="email" placeholder="Email">
           <input type="password" placeholder="Password">
-          <a href="#">forgot your password?</a>
-          <button>Sign In</button>
+          <button>Войти</button>
         </form>
       </div>
   </div>
@@ -44,7 +41,7 @@ export default {
     };
   },
   methods: {
-    toggle() {
+    toggleAuth() {
       this.signUp = !this.signUp;
     }
   }
@@ -53,7 +50,6 @@ export default {
 
 <style lang="scss">
 .auth{
-  margin: 50px auto;
   &__box {
     position: relative;
     width: 768px;
@@ -62,6 +58,7 @@ export default {
     overflow: hidden;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     background: green;
+    margin: 30px auto;
     &__overlay-container {
       position: absolute;
       top: 0;
@@ -77,7 +74,7 @@ export default {
       left: -100%;
       height: 100%;
       width: 200%;
-      background: linear-gradient(to bottom right, #7FD625, #009345);
+      background: skyblue;
       color: #fff;
       transform: translateX(0);
       transition: transform 0.5s ease-in-out;
@@ -90,8 +87,10 @@ export default {
         align-items: center;
         flex-direction: column;
         padding: 70px 40px;
-        width: calc(50% - 80px);
-        height: calc(100% - 140px);
+        // width: calc(50% - 80px);
+        // height: calc(100% - 140px);
+        width: 50%;
+        height: 100%;
         text-align: center;
         transition: transform 0.5s ease-in-out;
       }
@@ -104,22 +103,25 @@ export default {
       }
     }
   }
+  &__form {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 90px 60px;
+    // width: calc(50%-120px);
+    // height: calc(100% - 180px);
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+  }
 }
 
 
-form {
-  position: absolute;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-  padding: 90px 60px;
-  width: calc(50%-120px);
-  height: calc(100% - 180px);
-  text-align: center;
-  transition: all 0.5s ease-in-out;
-}
+
 
 .sign_in {
   left: 0;
@@ -137,10 +139,10 @@ form {
   }
 
   .sign_up {
-    transform: translateX(120%);
+    transform: translateX(100%);
     opacity: 1;
     z-index: 5;
-    animation: show 0.5s;
+    animation: show-auth-anim 0.5s;
   }
 
   .auth__box__overlay-container {
@@ -159,7 +161,7 @@ form {
   }
 }
 
-@keyframes show {
+@keyframes show-auth-anim {
   0% {
     opacity: 0;
     z-index: 1;
