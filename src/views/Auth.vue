@@ -15,18 +15,28 @@
             </div>
           </div>
         </div>
-        <form class="auth__form sign_up" action="#">
-          <h2>Создайте Логин</h2>
-          <input type="text" placeholder="Name">
-          <input type="email" placeholder="Email">
-          <input type="password" placeholder="Password">
+        <form class="auth__form sign_up" action="#" @submit.prevent="validateFormRegestration">
+          <h2>Создайте Аккаунт</h2>
+          <input type="text" placeholder="Name" v-model="nameRegistration">
+          <input type="email" placeholder="Email" v-model="emailRegistration">
+          <input type="password" placeholder="Password" v-model="passwordRegistration">
           <button>Зарегестрироваться</button>
+            <ul>
+              <li v-for="(errorReg, index) in errorsReg" :key="index">
+                <span class="auth__form--error">{{errorReg}}</span>
+              </li>
+            </ul>
         </form>
-        <form class="auth__form sign_in" action="#">
+        <form class="auth__form sign_in" action="#" @submit.prevent="validateFormLogin">
           <h2>Войти</h2>
-          <input type="email" placeholder="Email">
-          <input type="password" placeholder="Password">
+          <input type="email" placeholder="Email" v-model="emailLogin">
+          <input type="password" placeholder="Password" v-model="passwordLogin">
           <button>Войти</button>
+          <ul>
+            <li v-for="(errorLog, index) in errorsLog" :key="index">
+              <span class="auth__form--error">{{errorLog}}</span>
+            </li>
+          </ul>
         </form>
       </div>
   </div>
@@ -37,13 +47,54 @@ export default {
   name: "App",
   data() {
     return {
-      signUp: false
+      signUp: false,
+      errorsReg: [],
+      errorsLog: [],
+      nameRegistration: null,
+      emailRegistration: null,
+      passwordRegistration: null,
+      emailLogin: null,
+      passwordLogin: null
     };
   },
   methods: {
     toggleAuth() {
       this.signUp = !this.signUp;
+    },
+    validateFormRegestration(){
+      if (this.nameRegistration && this.emailRegistration && this.passwordRegistration) {
+        return true;
+      }
+      // чтобы не дублтровать ошибки
+      this.errorsReg = []
+
+      if(!this.nameRegistration){
+        this.errorsReg.push('заполните поле с именем')
+      }
+      if(!this.emailRegistration){
+        this.errorsReg.push('заполните поле с email')
+      }
+      if(!this.passwordRegistration){
+        this.errorsReg.push('заполните поле с паролем')
+      }
+      if(this.passwordRegistration.length < 6){
+        this.errorsReg.push('пароль должен содержать не менее 6 сиволов')
+      }
+    },
+    validateFormLogin(){
+      if (this.emailLogin && this.passwordLogin) {
+        return true;
+      }
+      // чтобы не дублтровать ошибки
+      this.errorsLog = []
+      if(!this.emailLogin) {
+        this.errorsLog.push('введите email')
+      }
+      if(!this.passwordLogin){
+        this.errorsLog.push('введите пароль')
+      }
     }
+
   }
 };
 </script>
@@ -117,6 +168,9 @@ export default {
     height: 100%;
     text-align: center;
     transition: all 0.5s ease-in-out;
+    &--error{
+      color: red;
+    }
   }
 }
 
