@@ -27,7 +27,7 @@
             <div class="university__popup__body">
                 <p>Год основания: <strong>{{university.since}}</strong></p>
                 <p>Кем основан: <strong>{{university.father}}</strong></p>
-                <p>Позиция в рейтинге: <strong>{{topNumber}}</strong></p>
+                <p>Позиция в рейтинге: <strong>{{university.topNumber}}</strong></p>
             </div>
             
             <span @click="closeUniversityPopup" class="university__popup--close">&times;</span>

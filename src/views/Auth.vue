@@ -50,11 +50,11 @@ export default {
       signUp: false,
       errorsReg: [],
       errorsLog: [],
-      nameRegistration: null,
-      emailRegistration: null,
-      passwordRegistration: null,
-      emailLogin: null,
-      passwordLogin: null
+      nameRegistration: '',
+      emailRegistration: '',
+      passwordRegistration: '',
+      emailLogin: '',
+      passwordLogin: ''
     };
   },
   methods: {
