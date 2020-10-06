@@ -20,7 +20,9 @@
                 </div>
             </div>
         </div>
-        <p>{{university.longDescr}}</p>
+        <div class="university__description">
+            <p>{{university.longDescr}}</p>
+        </div>
         <div v-if="popupShow" @click="closeUniversityPopup" class="university__darkLay"></div>
         <div class=university__popup v-show="popupShow">
             <h4 class="university__popup--title">{{university.title}}</h4>
@@ -82,8 +84,11 @@ import {mapGetters, mapActions} from 'vuex'
             align-items: center;
             justify-content: center;
             border:1px solid pink;
+            height: 200px;
             &__item{
-                width: 50%;
+                // width: 50%;
+                width: 300px;
+                height: 200px;
                 display: flex;
                 justify-content: center;
                 &__link{
@@ -108,8 +113,12 @@ import {mapGetters, mapActions} from 'vuex'
                 }
                 &--img {
                     border: 1px solid blue;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                         & img {
                         max-width: 100%;
+                        max-height: 100%;
                     }
                 }    
             }
@@ -161,6 +170,9 @@ import {mapGetters, mapActions} from 'vuex'
             bottom: 0;
             background: black;
             opacity: .5;
+        }
+        &__description{
+            padding: 10px;
         }
         
     }
