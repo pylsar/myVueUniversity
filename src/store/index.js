@@ -57,7 +57,8 @@ export default new Vuex.Store({
     //разобраться
     editComment({ commit }, ...payload) {
       commit("editComment", payload);
-    }
+    },
+
   },
   getters: {
     UNIVERSITIES(state){

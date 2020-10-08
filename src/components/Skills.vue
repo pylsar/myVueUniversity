@@ -21,8 +21,12 @@ export default{
 </script>
 <style>
 .skills{
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid red;
 }    
 </style>   
