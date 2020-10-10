@@ -134,12 +134,10 @@ export default {
         position: absolute;
         top: 0;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         flex-direction: column;
-        padding: 70px 40px;
-        // width: calc(50% - 80px);
-        // height: calc(100% - 140px);
+        padding: 90px 60px;
         width: 50%;
         height: 100%;
         text-align: center;
@@ -159,11 +157,9 @@ export default {
     top: 0;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: column;
     padding: 90px 60px;
-    // width: calc(50%-120px);
-    // height: calc(100% - 180px);
     width: 50%;
     height: 100%;
     text-align: center;
@@ -173,9 +169,6 @@ export default {
     }
   }
 }
-
-
-
 
 .sign_in {
   left: 0;

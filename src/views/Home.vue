@@ -5,33 +5,30 @@
       <div>
         <div class="home__box__item">
           <Skills @click="clickHtml" :title="'html'" />
-          <SkillsData v-show="htmlIsOpen" :nameOne="'html5'" :nameTwo="'семантическая верстка'"/>
+          <transition name="slide-fade">
+            <SkillsData v-show="htmlIsOpen" :nameOne="'html5'" :nameTwo="'семантическая верстка'"/>
+          </transition>  
         </div> 
         <div class="home__box__item">
           <Skills @click="clickCss" :title="'css'" />
-          <SkillsData v-if="cssIsOpen" :nameOne="'css3'"/>
+          <transition name="slide-fade">
+            <SkillsData v-if="cssIsOpen" :nameOne="'css3'"/>
+          </transition>  
         </div> 
         <div class="home__box__item"> 
           <Skills @click="clickJs" :title="'js'"/>
-          <SkillsData v-if="jsIsOpen" :nameOne="'Vanilla Js'" :nameTwo="'Vue'"/>
+          <transition name="slide-fade">
+            <SkillsData v-if="jsIsOpen" :nameOne="'Vanilla Js'" :nameTwo="'Vue'"/>
+          </transition>  
         </div>
         <div class="home__box__item">  
           <Skills @click="clickDif" :title="'others'"/>
-          <SkillsData v-if="difIsOpen" :nameOne="'git'" :nameTwo="'webpack'"/>
+          <transition name="slide-fade">
+            <SkillsData v-if="difIsOpen" :nameOne="'git'" :nameTwo="'webpack'"/>
+          </transition>  
         </div>  
       </div>
-      <div class="home__box__photo">
-        <div class="home__box__photo__img">
-          <img class="home__box__photo__img--img" :src=" require(`../assets/img/myPhoto.jpg`) " alt="Alexey Kusov">
-        </div>
-        <div class="home__box__photo__descr">
-          <ul class="home__box__photo__descr__list">
-            <li>имя: Кусов Алексей</li>
-            <li>дата рождения: 23.02.1986</li>
-            <li>страна: Россия</li>
-          </ul>
-        </div> 
-      </div>
+      <HomeBio />
     </div> 
   </div>
 </template>
@@ -39,11 +36,13 @@
 <script>
 import Skills from '../components/Skills.vue';
 import SkillsData from '../components/SkillsData.vue';
+import HomeBio from '../components/HomeBio.vue';
 export default {
   name: 'Home',
   components: {
     Skills,
-    SkillsData
+    SkillsData,
+    HomeBio
   },
   data(){
     return {
@@ -77,30 +76,17 @@ export default {
     &__item{
       display: flex;
     }
-    &__photo{
-      border: 1px solid red;
-      margin: 10px;
-      &__img{
-        width: 300px;
-        height: 300px;
-        border: 1px solid blue;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        &--img {
-          width: 100%;
-        }
-      }
-      &__descr{
-        &__list {  
-          & li {
-            font-size: 20px;
-          }
-        }
-      }
-    }
   }
 }
   
-
+.slide-fade-enter-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
 </style>
