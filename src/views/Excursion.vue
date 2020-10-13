@@ -16,13 +16,37 @@
       </div>
       <button>Заказать</button>
     </form>   
+    <div>
+      <ul>
+        <li v-for="(university, index) in UNIVERSITIES" :key="index">{{university.title}}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex';
 export default {
   name: 'Excursion',
   components: {
-  }
+  },
+  methods: {
+    ...mapActions([
+        'GET_UNIVERSITIES_FROM_API',
+    ]),
+    
+  },
+  computed: {
+    ...mapGetters([
+        'UNIVERSITIES'
+    ]),
+    university() {
+        //необходимо привести к числу
+    return this.$store.getters.universityById(+this.$route.params.id);
+    }
+  },
+  mounted(){
+    this.GET_UNIVERSITIES_FROM_API()
+  }, 
 }
 </script>

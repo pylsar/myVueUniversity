@@ -20,7 +20,7 @@
       <button @click="editComment" class="btn--edit">Edite</button>
       <button @click="deleteComment" class="btn--warning">Delete</button>
       <button @click="saveChangeComment" class="btn--success" :disabled="!btnDisabled">Save</button>
-    </div>
+    </div> 
   </div>
 </template>
 <script>
