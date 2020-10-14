@@ -1,5 +1,6 @@
 # my-vue-university
-
+    //  для запуска
+*  npm install -g json-server
 *  npm run serve
 *  json-server ./src/assets/db.json --watch --port 3001
 
@@ -14,7 +15,8 @@
 
 
 ### TodoList
-    *[ ] тогл по странам
+    //todo
+    * [ ] тогл по странам
     * [ ] заказать экскурсию
         * [ ] двухшаговая
         * [ ] дропдаун
