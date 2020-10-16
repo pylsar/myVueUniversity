@@ -1,34 +1,28 @@
 <template>
   <div class="excursion">
-    <h2>Закажите Экскурсию</h2> 
-    <form >
-      <div>
-        <label for="firstName">Имя</label>
-        <input type="text" id="firstName" placeholder="Имя..." required>
-      </div>
-      <div>
-        <label for="lastName">Фамилия</label>
-        <input type="text" id="lastName" placeholder="Фамилия..." required>
-      </div>
-      <div>
-        <label for="universityName">Выберите Университет</label>
-        <input type="text" id="universityName" placeholder="Выберите университет..." required>
-      </div>
-      <button>Заказать</button>
-    </form>   
-    <div>
-      <ul>
-        <li v-for="(university, index) in UNIVERSITIES" :key="index">{{university.title}}</li>
-      </ul>
-    </div>
+    <ExcursionForm/>
+    <table class="excursion__table">
+      <thead>
+          <tr>
+              <th>Университет</th> <th>Страна</th> <th>Цена</th>
+          </tr>
+      </thead>
+      <tbody>
+        <ExcursionTable v-for="(university, index) in UNIVERSITIES" :key="index" :university="university"/>
+      </tbody>
+    </table>  
   </div>
 </template>
 
 <script>
 import {mapGetters, mapActions} from 'vuex';
+import ExcursionForm from '../components/ExcursionForm.vue';
+import ExcursionTable from '../components/ExcursionTable.vue';
 export default {
   name: 'Excursion',
   components: {
+    ExcursionForm,
+    ExcursionTable
   },
   methods: {
     ...mapActions([
@@ -50,3 +44,17 @@ export default {
   }, 
 }
 </script>
+
+<style lang="scss">
+  .excursion{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    &__table {
+      border-collapse:separate; 
+      border-spacing: 15px;
+      text-align: left;
+    }
+  }
+
+</style>
