@@ -14,14 +14,14 @@
           </tr>
       </thead>
       <tbody>
-        <ExcursionTable v-for="(university, index) in UNIVERSITIES" :key="index" :university="university"/>
+        <ExcursionTable v-for="(university, index) in universities" :key="index" :university="university"/>
       </tbody>
     </table>  
   </div>
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex';
+import axios from 'axios';
 import ExcursionForm from '../components/ExcursionForm.vue';
 import ExcursionTable from '../components/ExcursionTable.vue';
 export default {
@@ -30,41 +30,35 @@ export default {
     ExcursionForm,
     ExcursionTable
   },
+  data(){
+    return {
+      universities: {}
+    }
+  },
   methods: {
-    ...mapActions([
-        'GET_UNIVERSITIES_FROM_API',
-    ]),
     sortByTitle(){
-      return this.UNIVERSITIES.sort((a,b) => a.title > b.title ?  1 : -1);
+      return this.universities.sort((a,b) => a.title > b.title ?  1 : -1);
     },
     sortByCounrty(){
-      return this.UNIVERSITIES.sort((a,b) => a.country > b.country ? 1 : -1) ;
+      return this.universities.sort((a,b) => a.country > b.country ? 1 : -1) ;
     },
     sortByPriceUp(){
-      return this.UNIVERSITIES.sort((a,b) => a.price-b.price);
+      return this.universities.sort((a,b) => a.price-b.price);
     },
     sortByPriceDown(){
-      return this.UNIVERSITIES.sort((a,b) => b.price-a.price);
+      return this.universities.sort((a,b) => b.price-a.price);
     },
     sortByTopUp(){
-      return this.UNIVERSITIES.sort((a,b) => a.topNumber-b.topNumber);
+      return this.universities.sort((a,b) => a.topNumber-b.topNumber);
     },
     sortByTopDown(){
-      return this.UNIVERSITIES.sort((a,b) => b.topNumber-a.topNumber);
+      return this.universities.sort((a,b) => b.topNumber-a.topNumber);
     },
   },
-  computed: {
-    ...mapGetters([
-        'UNIVERSITIES'
-    ]),
-
-    // university() {
-    //     //необходимо привести к числу
-    // return this.$store.getters.universityById(+this.$route.params.id);
-    // }
-  },
   mounted(){
-    this.GET_UNIVERSITIES_FROM_API()
+    axios.get('http://localhost:3001/universities')
+         .then(response => (this.universities = response.data))
+         .catch(error => console.log(error));
   }, 
 }
 </script>
