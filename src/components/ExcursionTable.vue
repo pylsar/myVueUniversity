@@ -1,6 +1,6 @@
 <template>
     <tr>
-        <td>{{university.title}}</td> <td>{{university.country}}</td> <td>{{university.price}}</td>
+        <td>{{university.title}}</td> <td>{{university.country}}</td> <td>{{university.price}}</td><td>{{university.topNumber}}</td>
     </tr>
 </template>
 <script>
