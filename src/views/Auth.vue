@@ -1,44 +1,56 @@
 <template>
   <div class="auth">
-      <div class="auth__box" :class="{'sign_up-active' : signUp}">
-        <div class="auth__box__overlay-container">
-          <div class="auth__box__overlay">
-            <div class="auth__box__overlay__left">
-              <h2>С возвращением</h2>
-              <p>Введите свои даные чтобы зарегестрироваться</p>
-              <button id="signIn" @click="toggleAuth">Войти</button>
-            </div>
-            <div class="auth__box__overlay__right">
-              <h2>Приветствуем Вас</h2>
-              <p>Введите логин и пароль</p>
-              <button id="signUp" @click="toggleAuth">Зарегестрироваться</button>
-            </div>
+    <div class="auth__box" :class="{ 'sign_up-active': signUp }">
+      <div class="auth__box__overlay-container">
+        <div class="auth__box__overlay">
+          <div class="auth__box__overlay__left">
+            <h2>С возвращением</h2>
+            <p>Введите свои даные чтобы зарегестрироваться</p>
+            <button id="signIn" @click="toggleAuth">Войти</button>
+          </div>
+          <div class="auth__box__overlay__right">
+            <h2>Приветствуем Вас</h2>
+            <p>Введите логин и пароль</p>
+            <button id="signUp" @click="toggleAuth">Зарегестрироваться</button>
           </div>
         </div>
-        <form class="auth__form sign_up" action="#" @submit.prevent="validateFormRegestration">
-          <h2>Создайте Аккаунт</h2>
-          <input type="text" placeholder="Name" v-model="nameRegistration">
-          <input type="email" placeholder="Email" v-model="emailRegistration">
-          <input type="password" placeholder="Password" v-model="passwordRegistration">
-          <button>Зарегестрироваться</button>
-            <ul>
-              <li v-for="(errorReg, index) in errorsReg" :key="index">
-                <span class="auth__form--error">{{errorReg}}</span>
-              </li>
-            </ul>
-        </form>
-        <form class="auth__form sign_in" action="#" @submit.prevent="validateFormLogin">
-          <h2>Войти</h2>
-          <input type="email" placeholder="Email" v-model="emailLogin">
-          <input type="password" placeholder="Password" v-model="passwordLogin">
-          <button>Войти</button>
-          <ul>
-            <li v-for="(errorLog, index) in errorsLog" :key="index">
-              <span class="auth__form--error">{{errorLog}}</span>
-            </li>
-          </ul>
-        </form>
       </div>
+      <form
+        class="auth__form sign_up"
+        action="#"
+        @submit.prevent="validateFormRegestration"
+      >
+        <h2>Создайте Аккаунт</h2>
+        <input type="text" placeholder="Name" v-model="nameRegistration" />
+        <input type="email" placeholder="Email" v-model="emailRegistration" />
+        <input
+          type="password"
+          placeholder="Password"
+          v-model="passwordRegistration"
+        />
+        <button>Зарегестрироваться</button>
+        <ul>
+          <li v-for="(errorReg, index) in errorsReg" :key="index">
+            <span class="auth__form--error">{{ errorReg }}</span>
+          </li>
+        </ul>
+      </form>
+      <form
+        class="auth__form sign_in"
+        action="#"
+        @submit.prevent="validateFormLogin"
+      >
+        <h2>Войти</h2>
+        <input type="email" placeholder="Email" v-model="emailLogin" />
+        <input type="password" placeholder="Password" v-model="passwordLogin" />
+        <button>Войти</button>
+        <ul>
+          <li v-for="(errorLog, index) in errorsLog" :key="index">
+            <span class="auth__form--error">{{ errorLog }}</span>
+          </li>
+        </ul>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -50,57 +62,60 @@ export default {
       signUp: false,
       errorsReg: [],
       errorsLog: [],
-      nameRegistration: '',
-      emailRegistration: '',
-      passwordRegistration: '',
-      emailLogin: '',
-      passwordLogin: ''
+      nameRegistration: "",
+      emailRegistration: "",
+      passwordRegistration: "",
+      emailLogin: "",
+      passwordLogin: "",
     };
   },
   methods: {
     toggleAuth() {
       this.signUp = !this.signUp;
     },
-    validateFormRegestration(){
-      if (this.nameRegistration && this.emailRegistration && this.passwordRegistration) {
+    validateFormRegestration() {
+      if (
+        this.nameRegistration &&
+        this.emailRegistration &&
+        this.passwordRegistration
+      ) {
         return true;
       }
       // чтобы не дублтровать ошибки
-      this.errorsReg = []
+      this.errorsReg = [];
 
-      if(!this.nameRegistration){
-        this.errorsReg.push('заполните поле с именем')
+      if (!this.nameRegistration) {
+        this.errorsReg.push("заполните поле с именем");
       }
-      if(!this.emailRegistration){
-        this.errorsReg.push('заполните поле с email')
+      if (!this.emailRegistration) {
+        this.errorsReg.push("заполните поле с email");
       }
-      if(!this.passwordRegistration){
-        this.errorsReg.push('заполните поле с паролем')
+      if (!this.passwordRegistration) {
+        this.errorsReg.push("заполните поле с паролем");
       }
-      if(this.passwordRegistration.length < 6){
-        this.errorsReg.push('пароль должен содержать не менее 6 сиволов')
+      if (this.passwordRegistration.length < 6) {
+        this.errorsReg.push("пароль должен содержать не менее 6 сиволов");
       }
     },
-    validateFormLogin(){
+    validateFormLogin() {
       if (this.emailLogin && this.passwordLogin) {
         return true;
       }
       // чтобы не дублтровать ошибки
-      this.errorsLog = []
-      if(!this.emailLogin) {
-        this.errorsLog.push('введите email')
+      this.errorsLog = [];
+      if (!this.emailLogin) {
+        this.errorsLog.push("введите email");
       }
-      if(!this.passwordLogin){
-        this.errorsLog.push('введите пароль')
+      if (!this.passwordLogin) {
+        this.errorsLog.push("введите пароль");
       }
-    }
-
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-.auth{
+.auth {
   &__box {
     position: relative;
     width: 768px;
@@ -164,7 +179,7 @@ export default {
     height: 100%;
     text-align: center;
     transition: all 0.5s ease-in-out;
-    &--error{
+    &--error {
       color: red;
     }
   }
