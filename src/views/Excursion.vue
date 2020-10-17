@@ -1,6 +1,6 @@
 <template>
   <div class="excursion">
-    <ExcursionForm/>
+    <ExcursionForm :universities="universities"/>
     <table class="excursion__table">
       <thead>
           <tr>
