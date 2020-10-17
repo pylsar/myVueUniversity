@@ -26,7 +26,7 @@
           required
         />
       </div>
-      <select class="excirsion-form__form__item" v-model="selectedUniversity">
+      <select class="excirsion-form__form__item--input" v-model="selectedUniversity">
         <option disabled value="Выберите университет">
           Выберите университет
         </option>
@@ -38,11 +38,24 @@
     </form>
 
     <div v-if="buyExcursion" class="excirsion-form__buy">
-      <span>Выбрано: {{ selectedUniversity }}</span>
+      <!-- <span>Выбрано: {{ selectedUniversity }}</span> -->
       <!-- так делать не рекомендуется, подумать как заменить -->
       <div v-for="(university, index) in universities" :key="index">
-        <div v-if="selectedUniversity == university.title">
-          {{ university.title }}{{ university.price }}
+        <div v-if="selectedUniversity == university.title" class="excirsion-form__buy__box">
+          <div>
+            <img class="excirsion-form__buy__box--img" :src="require('../assets/img/' + university.img)" alt="university.title" />
+          </div>
+          <div class="excirsion-form__buy__box--text">
+            <div>
+              <span>Название: {{ university.title }}</span>
+            </div>
+            <div>
+              <span>Страна: {{university.country}}</span>
+            </div>
+            <div>
+              <span>Цена: {{ university.price }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -73,7 +86,6 @@ export default {
 <style lang="scss">
 .excirsion-form {
   &__form {
-    border: 1px solid red;
     min-width: 350px;
     min-height: 400px;
     &__item {
@@ -93,7 +105,23 @@ export default {
     }
   }
   &__buy {
+    padding: 10px 10px;
     background: white;
+    box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    &__box{
+      display: flex;
+      &--img{
+        width: 70px;
+        height: 70px;
+      }
+      &--text {
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+    
   }
 }
 </style>
