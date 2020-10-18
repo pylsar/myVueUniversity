@@ -1,8 +1,9 @@
 <template>
     <div class="cart">
-        <div class="cart__overlay"></div>
+        <div @click="closeCart" class="cart__overlay"></div>
         <div class="cart__box">
             корзина
+            <span @click="closeCart" class="cart__box--close">&times;</span>
         </div>
     </div>
 </template>
@@ -10,7 +11,11 @@
 <script>
     export default {
         name: 'Cart',
-       
+        methods: {
+            closeCart(){
+                this.$emit('closeCart');
+            }
+        }
     }
 </script>
 <style lang="scss">
@@ -23,6 +28,14 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
+            &--close {
+                font-size: 40px;
+                line-height: 1;
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                cursor: pointer;
+            }
         }
         &__overlay {
             background: black;

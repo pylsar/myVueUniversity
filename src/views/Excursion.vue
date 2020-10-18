@@ -18,9 +18,9 @@
       </tbody>
     </table> 
     <div class="excursion__cart">
-      <img @click="toggleCart" class="excursion__cart--img" :src="require('../assets/img/cart.png')" alt="cart" />
+      <img @click="openCart" class="excursion__cart--img" :src="require('../assets/img/cart.png')" alt="cart" />
     </div> 
-    <Cart v-if="cartIsOpen"/>
+    <Cart v-if="cartIsOpen" @closeCart="closeCart"/>
   </div>
 </template>
 
@@ -61,8 +61,11 @@ export default {
     sortByTopDown(){
       return this.universities.sort((a,b) => b.topNumber-a.topNumber);
     },
-    toggleCart(){
+    openCart(){
       this.cartIsOpen = true;
+    },
+    closeCart(){
+      this.cartIsOpen = false;
     }
   },
   mounted(){
