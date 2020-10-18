@@ -34,11 +34,11 @@
           {{ university.title }}
         </option>
       </select>
-      <button @click="buyExcursionBtn">Заказать</button>
+      <!-- <button @click="buyExcursionBtn">Заказать</button> -->
+      <Btn v-if="!buyExcursion" :title="'Заказать'" :success="true" @click="buyExcursionBtn"/>
     </form>
 
     <div v-if="buyExcursion" class="excirsion-form__buy">
-      <!-- <span>Выбрано: {{ selectedUniversity }}</span> -->
       <!-- так делать не рекомендуется, подумать как заменить -->
       <div v-for="(university, index) in universities" :key="index">
         <div v-if="selectedUniversity == university.title" class="excirsion-form__buy__box">
@@ -47,14 +47,18 @@
           </div>
           <div class="excirsion-form__buy__box--text">
             <div>
-              <span>Название: {{ university.title }}</span>
+              <span><strong>Название:</strong> {{ university.title }}</span>
             </div>
             <div>
-              <span>Страна: {{university.country}}</span>
+              <span><strong>Страна:</strong> {{university.country}}</span>
             </div>
             <div>
-              <span>Цена: {{ university.price }}</span>
+              <span><strong>Цена:</strong> {{ university.price }}</span>
             </div>
+          </div>
+          <div class="excirsion-form__buy__box__btn">
+            <Btn :title="'Купить'" :success="true"/>
+            <Btn @click="cancelExcursion" :title="'Отменить'" :cancel="true"/>
           </div>
         </div>
       </div>
@@ -62,9 +66,13 @@
   </div>
 </template>
 <script>
+import Btn from '../components/Btn.vue';
 export default {
   name: "ExcursionForm",
   props: ["universities"],
+  components:{
+    Btn
+  },
   data() {
     return {
       selectedUniversity: "Выберите университет",
@@ -80,6 +88,9 @@ export default {
       }
     },
     validateFormExcursion() {},
+    cancelExcursion(){
+      this.buyExcursion = false;
+    }
   },
 };
 </script>  
@@ -119,6 +130,13 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+      }
+      &__btn{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-end;
+        flex: 1;
       }
     }
     

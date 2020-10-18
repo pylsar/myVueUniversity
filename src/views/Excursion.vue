@@ -16,7 +16,11 @@
       <tbody>
         <ExcursionTable v-for="(university, index) in universities" :key="index" :university="university"/>
       </tbody>
-    </table>  
+    </table> 
+    <div class="excursion__cart">
+      <img @click="toggleCart" class="excursion__cart--img" :src="require('../assets/img/cart.png')" alt="cart" />
+    </div> 
+    <Cart v-if="cartIsOpen"/>
   </div>
 </template>
 
@@ -24,15 +28,18 @@
 import axios from 'axios';
 import ExcursionForm from '../components/ExcursionForm.vue';
 import ExcursionTable from '../components/ExcursionTable.vue';
+import Cart from '../components/Cart.vue';
 export default {
   name: 'Excursion',
   components: {
     ExcursionForm,
-    ExcursionTable
+    ExcursionTable,
+    Cart
   },
   data(){
     return {
-      universities: {}
+      universities: {},
+      cartIsOpen: false,
     }
   },
   methods: {
@@ -54,6 +61,9 @@ export default {
     sortByTopDown(){
       return this.universities.sort((a,b) => b.topNumber-a.topNumber);
     },
+    toggleCart(){
+      this.cartIsOpen = true;
+    }
   },
   mounted(){
     axios.get('http://localhost:3001/universities')
@@ -85,6 +95,17 @@ export default {
       }
       &--sort {
         cursor: pointer;
+      }
+    }
+    &__cart{
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      cursor: pointer;
+      &--img {
+        width: 100%;
       }
     }
   }

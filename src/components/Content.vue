@@ -1,16 +1,16 @@
 <template>
   <div class="content">
     <!-- выводим на экран контент роутера -->
+    
     <router-view/>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'Content',
   components: {
-  }
+  },
 }
 </script>
 
