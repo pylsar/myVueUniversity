@@ -113,6 +113,7 @@ export default {
         background-color: lightgray;
         outline: none;
         border: none;
+        margin-bottom: 20px;
       }
       &--label {
         margin-bottom: 5px;

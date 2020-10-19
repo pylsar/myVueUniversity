@@ -2,7 +2,7 @@
     <div class="cart">
         <div @click="closeCart" class="cart__overlay"></div>
         <div class="cart__box">
-            <h2>Корзина</h2>
+            <h2 class="cart__box--title">Корзина</h2>
             <span @click="closeCart" class="cart__box--close">&times;</span>
             <div v-for="(university, index) in universities" :key="index">
                  <!-- так делать не рекомендуется, подумать как заменить -->
@@ -17,11 +17,8 @@
                         <Btn :title="'Купить'" :success="true" class="cart__box__item__btn--button"/>
                         <Btn @click="removeExcursion(index)" :title="'Передумал'" :cancel="true" class="cart__box__item__btn--button"/>
                     </div>
-                    
                 </div>
-                
             </div>
-            
         </div>
     </div>
 </template>
@@ -49,12 +46,17 @@ import Btn from '../components/Btn.vue';
         &__box{
             width: 600px;
             height: 600px;
+            border-radius: 6px;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
             padding: 20px;
+            &--title{
+                text-align: center;
+                margin-top: 20px;
+            }
             &--close {
                 font-size: 40px;
                 line-height: 1;
@@ -62,6 +64,10 @@ import Btn from '../components/Btn.vue';
                 top: 5px;
                 right: 10px;
                 cursor: pointer;
+                &:hover{
+                    transform: rotate(360deg);
+                    transition: .3s;
+                }
             }
             &__item {
                 display: flex;

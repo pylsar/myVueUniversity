@@ -49,6 +49,8 @@ button {
     width: 80px;
     display: flex;
     justify-content: center;
+    cursor: pointer;
+    border-radius: 2px;
 }
 .btn__disabled {
      pointer-events: none;
