@@ -20,7 +20,7 @@
     <div class="excursion__cart">
       <img @click="openCart" class="excursion__cart--img" :src="require('../assets/img/cart.png')" alt="cart" />
     </div> 
-    <Cart v-if="cartIsOpen" @closeCart="closeCart"/>
+    <Cart v-if="cartIsOpen" @closeCart="closeCart" :universities="universities"/>
   </div>
 </template>
 

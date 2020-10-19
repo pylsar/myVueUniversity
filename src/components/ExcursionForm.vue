@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="excirsion-form__buy__box__btn">
-            <Btn :title="'Купить'" :success="true"/>
+            <Btn @click="addExcursion(index)" :title="'Купить'" :success="true"/>
             <Btn @click="cancelExcursion" :title="'Отменить'" :cancel="true"/>
           </div>
         </div>
@@ -90,6 +90,9 @@ export default {
     validateFormExcursion() {},
     cancelExcursion(){
       this.buyExcursion = false;
+    },
+    addExcursion(index){
+      this.universities[index].inCart = true
     }
   },
 };

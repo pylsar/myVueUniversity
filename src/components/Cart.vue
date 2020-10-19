@@ -4,6 +4,12 @@
         <div class="cart__box">
             корзина
             <span @click="closeCart" class="cart__box--close">&times;</span>
+            <div v-for="(university, index) in universities" :key="index">
+                 <!-- так делать не рекомендуется, подумать как заменить -->
+                <div v-if="university.inCart">
+                    {{university.title}}
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -11,6 +17,7 @@
 <script>
     export default {
         name: 'Cart',
+        props:['universities'],
         methods: {
             closeCart(){
                 this.$emit('closeCart');
