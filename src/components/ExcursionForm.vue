@@ -57,8 +57,8 @@
             </div>
           </div>
           <div class="excirsion-form__buy__box__btn">
-            <Btn @click="addExcursion(index)" :title="'Купить'" :success="true"/>
-            <Btn @click="cancelExcursion" :title="'Отменить'" :cancel="true"/>
+            <Btn @click="addExcursion(index)" :title="'Добавить'" :success="true"/>
+            <Btn @click="cancelExcursion(index)" :title="'Отменить'" :cancel="true"/>
           </div>
         </div>
       </div>
@@ -88,11 +88,12 @@ export default {
       }
     },
     validateFormExcursion() {},
-    cancelExcursion(){
+    cancelExcursion(index){
+      this.universities[index].inCart = false;
       this.buyExcursion = false;
     },
     addExcursion(index){
-      this.universities[index].inCart = true
+      this.universities[index].inCart = true;
     }
   },
 };

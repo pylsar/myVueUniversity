@@ -2,26 +2,45 @@
     <div class="cart">
         <div @click="closeCart" class="cart__overlay"></div>
         <div class="cart__box">
-            корзина
+            <h2>Корзина</h2>
             <span @click="closeCart" class="cart__box--close">&times;</span>
             <div v-for="(university, index) in universities" :key="index">
                  <!-- так делать не рекомендуется, подумать как заменить -->
-                <div v-if="university.inCart">
-                    {{university.title}}
+                <div v-if="university.inCart" class="cart__box__item">
+                    <div class="cart__box__item__content">
+                        <div class="cart__box__item__content__img">
+                            <img class="cart__box__item__content__img--img" :src="require('../assets/img/' + university.img)" alt="university.title" />
+                        </div>
+                        <span class="cart__box__item__content--title">{{university.title}}</span>
+                    </div>
+                    <div class="cart__box__item__btn">
+                        <Btn :title="'Купить'" :success="true" class="cart__box__item__btn--button"/>
+                        <Btn @click="removeExcursion(index)" :title="'Передумал'" :cancel="true" class="cart__box__item__btn--button"/>
+                    </div>
+                    
                 </div>
+                
             </div>
+            
         </div>
     </div>
 </template>
 
 <script>
+import Btn from '../components/Btn.vue';
     export default {
         name: 'Cart',
         props:['universities'],
+        components: {
+            Btn
+        },
         methods: {
             closeCart(){
                 this.$emit('closeCart');
-            }
+            },
+            removeExcursion(index){
+                this.universities[index].inCart = false;
+            },
         }
     }
 </script>
@@ -35,6 +54,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
+            padding: 20px;
             &--close {
                 font-size: 40px;
                 line-height: 1;
@@ -42,6 +62,36 @@
                 top: 5px;
                 right: 10px;
                 cursor: pointer;
+            }
+            &__item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 20px;
+                &__btn {
+                   display: flex;
+                   &--button{
+                        margin-right: 5px;
+                    }
+                }
+                &__content {
+                    display: flex;
+                    align-items: center;
+                    &__img{
+                        width: 50px;
+                        height: 50px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 10px;
+                        &--img{
+                            width: 100%;
+                        }
+                    }
+                    &--title{
+                        margin-right: 40px;
+                    }
+                }
             }
         }
         &__overlay {
