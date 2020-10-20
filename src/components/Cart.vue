@@ -6,19 +6,30 @@
             <span @click="closeCart" class="cart__box--close">&times;</span>
             <div v-for="(university, index) in universities" :key="index">
                  <!-- так делать не рекомендуется, подумать как заменить -->
-                <div v-if="university.inCart" class="cart__box__item">
-                    <div class="cart__box__item__content">
-                        <div class="cart__box__item__content__img">
-                            <img class="cart__box__item__content__img--img" :src="require('../assets/img/' + university.img)" alt="university.title" />
+                <div v-if="university.inCart" >
+                    <div class="cart__box__item">
+                        <div class="cart__box__item__content">
+                            <div class="cart__box__item__content__img">
+                                <img class="cart__box__item__content__img--img" :src="require('../assets/img/' + university.img)" alt="university.title" />
+                            </div>
+                            <span class="cart__box__item__content--title">{{university.title}}</span>
                         </div>
-                        <span class="cart__box__item__content--title">{{university.title}}</span>
+                        <div class="cart__box__item__btn">
+                            <Btn @click="buyTickets(index)" :title="'Купить'" :success="true" class="cart__box__item__btn--button"/>
+                            <Btn @click="removeExcursion(index)" :title="'Передумал'" :cancel="true" class="cart__box__item__btn--button"/>
+                        </div>
                     </div>
-                    <div class="cart__box__item__btn">
-                        <Btn :title="'Купить'" :success="true" class="cart__box__item__btn--button"/>
-                        <Btn @click="removeExcursion(index)" :title="'Передумал'" :cancel="true" class="cart__box__item__btn--button"/>
+                    <div v-if="university.hasTicket">
+                        <hr/>
+                        <ul>
+                            <li>Вы забранировали экскурсию  в университет {{university.title}}</li>
+                            <li>Вам необходимо купить билеты до {{university.country}}</li>
+                            <li>Иметь хорошее настроение</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
@@ -31,6 +42,12 @@ import Btn from '../components/Btn.vue';
         components: {
             Btn
         },
+        data(){
+            return{
+                // hasTickets: false
+               
+            }
+        },
         methods: {
             closeCart(){
                 this.$emit('closeCart');
@@ -38,6 +55,10 @@ import Btn from '../components/Btn.vue';
             removeExcursion(index){
                 this.universities[index].inCart = false;
             },
+            buyTickets(index){
+               this.universities[index].hasTicket = true;
+
+            }
         }
     }
 </script>

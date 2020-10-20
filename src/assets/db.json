@@ -10,7 +10,8 @@
             "father": "Ломоносов М.В.",
             "topNumber": 189,
             "country": "Russia",
-            "inCart": false
+            "inCart": false,
+            "hasTicket": false
         },
         {
             "id": 2,
@@ -22,7 +23,8 @@
             "father": "Леланд Стэнфорд",
             "topNumber": 2,
             "country": "USA",
-            "inCart": false
+            "inCart": false,
+            "hasTicket": false
         },
         {
             "id": 3,
@@ -34,7 +36,8 @@
             "father": "ассоциация ученых",
             "topNumber": 1,
             "country": "Great Britain",
-            "inCart": false
+            "inCart": false,
+            "hasTicket": false
         },
         {
             "id": 4,
@@ -46,7 +49,8 @@
             "father": "Джон Гарвард",
             "topNumber": 3,
             "country": "USA",
-            "inCart": false
+            "inCart": false,
+            "hasTicket": false
         },
         {
             "id": 5,
@@ -58,7 +62,8 @@
             "father": "ассоциация ученых",
             "topNumber": 6,
             "country": "Great Britain",
-            "inCart": false
+            "inCart": false,
+            "hasTicket": false
         },
         {
             "id": 6,
@@ -70,7 +75,8 @@
             "father": " Генри Дюрант",
             "topNumber": 7,
             "country": "USA",
-            "inCart": false
+            "inCart": false,
+            "hasTicket": false
         },
         {
             "id": 7,
@@ -82,7 +88,8 @@
             "father": "ассоциация ученых",
             "topNumber": 8,
             "country": "USA",
-            "inCart": false
+            "inCart": false,
+            "hasTicket": false
         },
         {
             "id": 8,
@@ -94,7 +101,8 @@
             "father": "Джонатан Дикинсон",
             "topNumber": 9,
             "country": "USA",
-            "inCart": false
+            "inCart": false,
+            "hasTicket": false
         },
         {
             "id": 9,
@@ -106,7 +114,8 @@
             "father": "Гуансюя",
             "topNumber": 23,
             "country": "China",
-            "inCart": false
+            "inCart": false,
+            "hasTicket": false
         },
         {
             "id": 10,
@@ -118,7 +127,8 @@
             "father": "Елизавета I",
             "topNumber": 155,
             "country": "Ireland",
-            "inCart": false
+            "inCart": false,
+            "hasTicket": false
         }
         
     ]
