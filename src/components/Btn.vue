@@ -53,13 +53,13 @@ button {
     border-radius: 2px;
 }
 .btn__disabled {
-     pointer-events: none;
+  pointer-events: none;
 }
 .btn__cancel {
-    background: red;
+  background: red;
 }
 .btn__success {
-     background: green;
+  background: green;
 }
 </style>
 
