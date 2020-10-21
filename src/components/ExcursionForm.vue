@@ -34,7 +34,6 @@
           {{ university.title }}
         </option>
       </select>
-      <!-- <button @click="buyExcursionBtn">Заказать</button> -->
       <Btn v-if="!buyExcursion" :title="'Заказать'" :success="true" @click="buyExcursionBtn"/>
     </form>
 
@@ -63,20 +62,24 @@
         </div>
       </div>
     </div>
+    <Spinner v-if="spinnerIsOn"/>
   </div>
 </template>
 <script>
 import Btn from '../components/Btn.vue';
+import Spinner from './Spinner.vue';
 export default {
   name: "ExcursionForm",
   props: ["universities"],
   components:{
-    Btn
+    Btn,
+    Spinner
   },
   data() {
     return {
       selectedUniversity: "Выберите университет",
       buyExcursion: false,
+      spinnerIsOn: false
     };
   },
   methods: {
@@ -93,7 +96,9 @@ export default {
       this.buyExcursion = false;
     },
     addExcursion(index){
+      setTimeout( () => this.spinnerIsOn = false, 2000 );
       this.universities[index].inCart = true;
+      this.spinnerIsOn = true;
     }
   },
 };

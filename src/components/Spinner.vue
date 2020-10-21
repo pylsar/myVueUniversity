@@ -12,7 +12,6 @@
       <span class="spinner__box--dot"></span>
       <span class="spinner__box--dot"></span>
       <span class="spinner__box--dot"></span>
-      <span class="spinner__box--dot"></span>
     </div>
   </div>
 </template>
@@ -48,10 +47,10 @@ export default {
           margin: 3px;
           border-radius: 50%;
           &:not(:last-child){
-            animation: spinnerAnimateLiniar 2s linear infinite;
+            animation: spinnerAnimateLiniar 1.5s linear infinite;
           }
           &:last-child{
-            animation: spinnerAnimateDesipiar 2s ease-in-out infinite;
+            animation: spinnerAnimateDesipiar 1.5s ease-in-out infinite;
           }
         }
       }
@@ -73,7 +72,7 @@ export default {
         opacity: .5;
       }
       90%{
-        transform: translateX(-46px);
+        transform: translateX(-38px);
         opacity: .5
       }
       100% {
