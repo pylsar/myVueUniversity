@@ -22,7 +22,7 @@
 import {mapActions, mapGetters} from 'vuex'
     export default {
 
-    name: 'Sidebar',
+    name: 'TheSidebar',
     data() {
         return {
             isActive : true,
@@ -50,9 +50,10 @@ import {mapActions, mapGetters} from 'vuex'
 </script>
 
 <style lang="scss">
+@import '../styles/settings.scss';
     .sidebar {
         width: 200px;
-        background: violet;
+        background: $secondaryBg;
         height: calc(100vh - 70px);
         &__items{
             width: 100%;

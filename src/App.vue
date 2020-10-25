@@ -1,24 +1,24 @@
 <template>
   <div id="app">
-    <Header />
+    <TheHeader />
     <main>
-      <Sidebar />
-      <Content />
+      <TheSidebar />
+      <TheContent />
     </main>
   </div>
 </template>
 
 <script>
-  import Header from '@/components/Header.vue'
-  import Sidebar from '@/components/Sidebar.vue'
-  import Content from '@/components/Content.vue'
+  import TheHeader from '@/components/TheHeader.vue'
+  import TheSidebar from '@/components/TheSidebar.vue'
+  import TheContent from '@/components/TheContent.vue'
 
   export default {
     name: 'App',
     components: {
-      Header,
-      Sidebar,
-      Content,
+      TheHeader,
+      TheSidebar,
+      TheContent,
     }
   }
 </script>

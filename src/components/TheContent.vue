@@ -8,16 +8,17 @@
 
 <script>
 export default {
-  name: 'Content',
+  name: 'TheContent',
   components: {
   },
 }
 </script>
 
 <style lang="scss">
+@import '../styles/settings.scss';
     .content {
         width: calc(100vw - 200px);
         height: calc(100vh - 70px);
-        background: yellowgreen;
+        background: $mainBg;
     }
 </style>
