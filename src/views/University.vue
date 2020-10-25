@@ -24,16 +24,17 @@
             <p>{{university.longDescr}}</p>
         </div>
         <div v-if="popupShow" @click="closeUniversityPopup" class="university__darkLay"></div>
-        <div class=university__popup v-show="popupShow">
-            <h4 class="university__popup--title">{{university.title}}</h4>
-            <div class="university__popup__body">
-                <p>Год основания: <strong>{{university.since}}</strong></p>
-                <p>Кем основан: <strong>{{university.father}}</strong></p>
-                <p>Позиция в рейтинге: <strong>{{university.topNumber}}</strong></p>
+        <transition name="universityPopup" appear>
+            <div class=university__popup v-show="popupShow">
+                <h4 class="university__popup--title">{{university.title}}</h4>
+                <div class="university__popup__body">
+                    <p>Год основания: <strong>{{university.since}}</strong></p>
+                    <p>Кем основан: <strong>{{university.father}}</strong></p>
+                    <p>Позиция в рейтинге: <strong>{{university.topNumber}}</strong></p>
+                </div>
+                <span @click="closeUniversityPopup" class="university__popup--close">&times;</span>
             </div>
-            
-            <span @click="closeUniversityPopup" class="university__popup--close">&times;</span>
-        </div>
+        </transition>
     </div>
 </template>
 <script>
@@ -73,107 +74,126 @@ import {mapGetters, mapActions} from 'vuex'
 </script>
 
 <style lang="scss">
-    .university{
-        & h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-        &__box {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border:1px solid pink;
+.university{
+    & h1 {
+        text-align: center;
+        margin-top: 20px;
+    }
+    &__box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border:1px solid pink;
+        height: 200px;
+        &__item{
+            width: 300px;
             height: 200px;
-            &__item{
-                // width: 50%;
-                width: 300px;
-                height: 200px;
+            display: flex;
+            justify-content: center;
+            &__link{
+                margin-bottom: 10px;
+                width: 200px;
+                height: 50px;
                 display: flex;
                 justify-content: center;
-                &__link{
-                    margin-bottom: 10px;
-                    width: 200px;
-                    height: 50px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background: skyblue;
-                    border: 1px solid orange;
-                    border-radius: 5px;
-                }
-                &--summary{
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    cursor: pointer;
-                    background: lightgray;
-                    padding: 10px;
-                    font-weight: bold;
-                }
-                &--img {
-                    border: 1px solid blue;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                        & img {
-                        max-width: 100%;
-                        max-height: 100%;
-                    }
-                }    
-            }
-            &__left {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
                 align-items: center;
-                width: 50%;
+                background: skyblue;
+                border: 1px solid orange;
+                border-radius: 5px;
             }
-        }
-        &__popup{
-            width: 50vw;
-            height: 50vh;
-            background: lightgray;
-            position:absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            &--title {
-                text-align: center;
-                margin: 20px 0px;
-            }
-            &__body {
-                display: flex;
-                flex-direction: column;
-                & p {
-                    margin-bottom: 20px;
-                    padding-left: 10px;
-                }
-            }
-            &--close {
+            &--summary{
                 position: absolute;
-                top: 0px;
-                right: 20px;
-                font-size: 50px;
-                font-weight: bold;
+                top: 0;
+                left: 0;
                 cursor: pointer;
-                &:hover {
-                    color: green;
+                background: lightgray;
+                padding: 10px;
+                font-weight: bold;
+            }
+            &--img {
+                border: 1px solid blue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                    & img {
+                    max-width: 100%;
+                    max-height: 100%;
                 }
+            }    
+        }
+        &__left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            width: 50%;
+        }
+    }
+    &__popup{
+        width: 50vw;
+        height: 50vh;
+        background: lightgray;
+        position:absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        &--title {
+            text-align: center;
+            margin: 20px 0px;
+        }
+        &__body {
+            display: flex;
+            flex-direction: column;
+            & p {
+                margin-bottom: 20px;
+                padding-left: 10px;
             }
         }
-        &__darkLay {
+        &--close {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: black;
-            opacity: .5;
+            top: 0px;
+            right: 20px;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            &:hover {
+                color: green;
+            }
         }
-        &__description{
-            padding: 10px;
-        }
-        
     }
+    &__darkLay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: black;
+        opacity: .5;
+    }
+    &__description{
+        padding: 10px;
+    }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .4s linear;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.universityPopup-enter-active,
+.universityPopup-leave-active {
+  transition: transform 0.4s cubic-bezier(0.5, 0, 0.5, 1), opacity 0.4s linear;
+}
+
+.universityPopup-enter,
+.universityPopup-leave-to {
+  opacity: 0;
+  transform: scale(0.3) translateY(-50%);
+}
 </style>
