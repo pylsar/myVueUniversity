@@ -3,7 +3,15 @@
         <h1>{{university.title}}</h1>
         <div class="university__box">
             <div class="university__box__item university__box__left">
-                <div class="university__box__item--summary" @click="showPopup">?</div>
+                <div class="university__box__item__folder" @click="showPopup">
+                    <div class="university__box__item__folder__back">
+                        <div class="university__box__item__folder__back__paper"></div>
+                        <div class="university__box__item__folder__back__paper"></div>
+                        <div class="university__box__item__folder__back__paper"></div>
+                        <div class="university__box__item__folder__back__front"></div>
+                        <div class="university__box__item__folder__back__front university__box__item__folder__back__right">Досье</div>
+                    </div>
+                </div>
                 <div class="university__box__item__link">
                     <router-link to='/excursion'>Заказать экскурсию</router-link>
                 </div>
@@ -102,14 +110,74 @@ import {mapGetters, mapActions} from 'vuex'
                 border: 1px solid orange;
                 border-radius: 5px;
             }
-            &--summary{
+            &__folder{
+                transition: all 0.2s ease-in;
                 position: absolute;
-                top: 0;
-                left: 0;
+                top:0;
+                left:0;
                 cursor: pointer;
-                background: lightgray;
-                padding: 10px;
-                font-weight: bold;
+                &__back{
+                    position: relative;
+                    width: 100px;
+                    height: 80px;
+                    background: orange;
+                    border-radius: 0px 5px 5px 5px;
+                    &::after {
+                        position: absolute;
+                        bottom: 98%; 
+                        left: 0;
+                        content: "";
+                        width: 30px;
+                        height: 10px;
+                        background: red; 
+                        border-radius: 5px 5px 0 0;
+                    }
+                    &__paper {
+                        position: absolute;
+                        bottom: 10%;
+                        left: 50%;
+                        transform: translate(-50%, 10%);
+                        width: 70%;
+                        height: 80%;
+                        background: yellow;
+                        border-radius: 5px;
+                        transition: all 0.3s ease-in-out;
+                        &:nth-child(2) {
+                            background: blue;
+                            width: 80%;
+                            height: 70%;
+                        }
+                        &:nth-child(3) {
+                            background: green;
+                            width: 90%;
+                            height: 60%;
+                        }
+                    } 
+                    &__front {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: red;
+                        border-radius: 5px;
+                        transform-origin: bottom;
+                        transition: all 0.3s ease-in-out;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }   
+                }
+                &:hover {
+                    transform: translateY(-8px);
+                }
+                &:hover .university__box__item__folder__back__paper {
+                    transform: translate(-50%, 0%);
+                }
+                 &:hover .university__box__item__folder__back__front {
+                    transform: skew(15deg) scaleY(0.6);
+                }
+                &:hover .university__box__item__folder__back__right {
+                    transform: skew(-15deg) scaleY(0.6);
+                }
             }
             &--img {
                 border: 1px solid blue;
