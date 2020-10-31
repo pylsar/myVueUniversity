@@ -54,7 +54,7 @@ import {mapActions, mapGetters} from 'vuex'
     .sidebar {
         width: 200px;
         background: $secondaryBg;
-        height: calc(100vh - 70px);
+        min-height: calc(100vh - 70px);
         &__items{
             width: 100%;
             &--link{

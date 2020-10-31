@@ -18,7 +18,7 @@ export default {
 @import '../styles/settings.scss';
     .content {
         width: calc(100vw - 200px);
-        height: calc(100vh - 70px);
+        min-height: calc(100vh - 70px);
         background: $mainBg;
     }
 </style>

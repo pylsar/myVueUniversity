@@ -1,75 +1,101 @@
 <template>
-    <div class="gallary">
-        <div v-for="(gallary, index) in gallaries" :key="index" class="gallary__items" :class="{'big': gallary.current}">
-            <img :src="require('../assets/img/' + gallary.img)" alt="" @click="gallary.current = !gallary.current" />
-             <div v-show="gallary.current" class="gallary__items--name">
-                 {{gallary.name}}
-            </div>
+  <div class="top">
+    <h1>Gallary</h1>
+    <div @click="backGallary">назад</div>
+    <div class="gallary__box">
+      <div v-for="(gallary, index) in gallaries" :key="index" class="gallary__box__items" :style="{'transform' : 'translateX' + '(' + '-' + (220 * gallaryCurent) + 'px' + ')'}">
+        <div class="gallary__box__items__img">
+          <img :src="require('../assets/img/' + gallary.img)" alt="" class="gallary__box__items__img--img"/>
         </div>
+        <div>
+          {{gallary.name}}
+        </div>
+      </div>
     </div>
-</template> 
+    <div @click="forwardGallary">вперед</div> 
+  </div>
+</template>
+
 <script>
 export default {
-    name: 'Gallary',
-    data(){
-        return{
-            gallaries: [
-                {
-                    img : "mgy1.jpg",
-                    name: "МГУ1",
-                    current: false
-                },
-                {
-                    img : "mgy2.jpg",
-                    name: "МГУ2",
-                    current: false
-                },
-                {
-                    img : "mgy3.jpg",
-                    name: "МГУ3",
-                    current: false
-                },
-                {
-                    img : "mgy4.jpg",
-                    name: "МГУ4",
-                    current: false
-                }
-            ]
-        }
+  name: "Gallary",
+  components: {
+  },
+  data(){
+    return{
+      gallaryCurent: 0,
+        gallaries: [
+            {
+                img : "mgy1.jpg",
+                name: "МГУ1",
+            },
+            {
+                img : "mgy2.jpg",
+                name: "МГУ2",
+            },
+            {
+                img : "mgy3.jpg",
+                name: "МГУ3",
+            },
+            {
+                img : "mgy4.jpg",
+                name: "МГУ4",
+            },
+             {
+                img : "mgy4.jpg",
+                name: "МГУ4",
+            },
+             {
+                img : "mgy4.jpg",
+                name: "МГУ4",
+            }
+        ]
     }
-}
-</script>  
+  },
+  methods:{
+    forwardGallary(){
+      if(this.gallaryCurent >= this.gallaries.length - 1){
+        this.gallaryCurent = 0;
+      }else{
+        this.gallaryCurent++;
+      }
+    },
+    backGallary(){
+      if(this.gallaryCurent > 0){
+        this.gallaryCurent--
+      }
+    }
+  }
+};
+</script>
+
 <style lang="scss">
-.gallary{
-    display: flex;
-    &__items {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  .gallary{
+    &__box{
+      display: flex; 
+      width: 640px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid red;
+      &__items{
         width: 200px;
-        height: 200px;
+        height: 300px;
         border: 1px solid red;
-        & img {
+        margin-right: 20px;
+        &:last-child{
+          margin-right: 0px;
+        }
+        &__img {
+          width: 200px;
+          height: 200px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &--img{
             width: 100%;
+          }
         }
-        &--name{
-            position: absolute;
-            bottom: -200%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            font-size: 32px;
-        }
+      }
     }
-}
-.big {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100vw;
-
-}
-
-</style> 
+  }
+</style>
