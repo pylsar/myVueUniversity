@@ -1,7 +1,7 @@
 <template>
-  <div class="top">
+  <div class="gallary">
     <h1>Gallary</h1>
-    <div @click="backGallary">назад</div>
+
     <div class="gallary__box">
       <div v-for="(gallary, index) in gallaries" :key="index" class="gallary__box__items" :style="{'transform' : 'translateX' + '(' + '-' + (220 * gallaryCurent) + 'px' + ')'}">
         <div class="gallary__box__items__img">
@@ -12,7 +12,11 @@
         </div>
       </div>
     </div>
-    <div @click="forwardGallary">вперед</div> 
+
+    <div class="gallary__control">
+      <div @click="backGallary">назад</div>
+      <div @click="forwardGallary">вперед</div> 
+    </div>
   </div>
 </template>
 
@@ -71,10 +75,23 @@ export default {
 
 <style lang="scss">
   .gallary{
+    & h1{
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    &__control{
+      width: 100px;
+      border: 1px solid red;
+      margin: 0px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     &__box{
       display: flex; 
       width: 640px;
-      margin: 0 auto;
+      margin: 50px auto;
       overflow: hidden;
       border: 1px solid red;
       &__items{
