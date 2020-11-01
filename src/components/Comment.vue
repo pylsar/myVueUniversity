@@ -8,14 +8,6 @@
       @input="changeComment"
       :class="{'edit' : !changed}"
     >
-
-        <!-- <div v-if="btnVisible">
-          <button class="btn--sucsess">Save</button>
-          <button class="btn--warning">Cancel</button>
-        </div> -->
-
-
-
     <div class="comment__card">
       <span>{{comments[index].author}} {{comments[index].date}}</span>
       <span @click="showSubComment" class="comment__card--close">&times;</span>
@@ -32,7 +24,7 @@
         :success="true"
       />
       <Btn
-        @click="deleteComment()"
+        @click="deleteComment(index)"
         :title="'Удалить'"
         :cancel="true"
       />
@@ -61,7 +53,7 @@ export default {
     ...mapGetters(["comments"])
   },
   methods: {
-    ...mapActions(["deleteComment"]),
+    
     showSubComment() {
       this.subComment = !this.subComment;
     },
@@ -80,9 +72,10 @@ export default {
     saveChangeComment() {
       if (this.newComment) {
         this.changeComment([this.index, this.newComment]);
+        this.subComment = false;
       }
-      // this.subComment = false;
-    }
+    },
+    ...mapActions(["deleteComment"]), // всегда внизу должна быть
   },
   // не работает
   // mounted() {
