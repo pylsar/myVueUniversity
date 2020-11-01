@@ -23,6 +23,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    edit: {
+      type: Boolean,
+      default: false,
+    }
   },
 
   methods: {
@@ -36,6 +40,7 @@ export default {
         btn__disabled: this.disabled,
         btn__cancel: this.cancel,
         btn__success: this.success,
+        btn__edit: this.edit
       };
     },
   },
@@ -60,6 +65,9 @@ button {
 }
 .btn__success {
   background: green;
+}
+.btn__edit{
+  background: gray;
 }
 </style>
 

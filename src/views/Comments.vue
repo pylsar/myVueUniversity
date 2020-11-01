@@ -1,6 +1,6 @@
 <template>
-  <div id="comments">
-    <h3>Оставьте Ваш комментарий</h3>
+  <div class="comments">
+    <h3 class="comments--title">Оставьте Ваш комментарий</h3>
     <AddComment/>
     <div v-for="index in commentsCount" :key="index">
       <Comment :index="index-1"/>
@@ -23,3 +23,13 @@ export default {
      
 }
 </script>  
+<style lang="scss">
+.comments{
+  width: 80%;
+  margin: 0px auto;
+  &--title{
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+</style>

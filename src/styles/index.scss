@@ -14,25 +14,25 @@ main {
     display: flex;
 }
 
-.btn--success, .btn--warning, .btn--edit {
-    padding: 10px 20px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    &:hover {
-        opacity: .7;
-    }
-}
+// .btn--success, .btn--warning, .btn--edit {
+//     padding: 10px 20px;
+//     outline: none;
+//     border: none;
+//     cursor: pointer;
+//     margin-top: 10px;
+//     &:hover {
+//         opacity: .7;
+//     }
+// }
 
-.btn--success{
-    background: lightgreen
-}
+// .btn--success{
+//     background: lightgreen
+// }
 
-.btn--warning {
-    background: red;
-}
+// .btn--warning {
+//     background: red;
+// }
 
-.btn--edit {
-    background: lightgray;
-}
+// .btn--edit {
+//     background: lightgray;
+// }

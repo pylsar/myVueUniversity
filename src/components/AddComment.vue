@@ -6,17 +6,33 @@
             v-model="newCommentInput" 
             @click="onBtnVisible"
             class="add_comment--input"
+            @keyup.enter="save"
+            @keydown.esc="cancel"
             >
-        <div v-if="btnVisible">
-            <button @click="save" class="btn--success">Save</button>
-            <button @click="cancel" class="btn--warning">Cancel</button>
+        <div v-if="btnVisible" class="add_comment__buttons">
+            <Btn
+                @click="save"
+                :title="'Сохранить'"
+                :success="true"
+                class="add_comment__buttons__btn"
+            />
+            <Btn
+                @click="cancel"
+                :title="'Отмена'"
+                :cancel="true"
+                class="add_comment__buttons__btn"
+            />
         </div>
     </div>
 </template> 
 <script>
 import {mapActions} from 'vuex';
+import Btn from './Btn.vue';
 export default {
     name: 'AddComment',
+    components:{
+        Btn
+    },
     data(){
         return{
             newCommentInput: '',
@@ -51,6 +67,14 @@ export default {
             width: 80%;
             font-size: 24px;
             outline: none;
+            margin-bottom: 20px;           
+        }
+        &__buttons{
+            display: flex;
+            &__btn{
+                margin-right: 10px;
+            }
         }
     }
+
 </style> 

@@ -8,29 +8,49 @@
       @input="changeComment"
       :class="{'edit' : !changed}"
     >
-    <div v-if="btnVisible">
-      <button class="btn--sucsess">Save</button>
-      <button class="btn--warning">Cancel</button>
-    </div>
+
+        <!-- <div v-if="btnVisible">
+          <button class="btn--sucsess">Save</button>
+          <button class="btn--warning">Cancel</button>
+        </div> -->
+
+
+
     <div class="comment__card">
       <span>{{comments[index].author}} {{comments[index].date}}</span>
       <span @click="showSubComment" class="comment__card--close">&times;</span>
     </div>
     <div v-if="subComment">
-      <button @click="editComment" class="btn--edit">Edite</button>
-      <button @click="deleteComment" class="btn--warning">Delete</button>
-      <button @click="saveChangeComment" class="btn--success" :disabled="!btnDisabled">Save</button>
+      <Btn
+        @click="editComment"
+        :title="'Эдит'"
+        :edit="true"
+      />
+      <Btn
+        @click="saveChangeComment"
+        :title="'Сохранить'"
+        :success="true"
+      />
+      <Btn
+        @click="deleteComment()"
+        :title="'Удалить'"
+        :cancel="true"
+      />
     </div> 
   </div>
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
+import Btn from './Btn.vue';
 export default {
   props: ["index"],
   name: "Comment",
+  components: {
+    Btn
+  },
   data() {
     return {
-      btnVisible: false,
+      // btnVisible: false,
       subComment: false,
       btnDisabled: false,
       newComment: "",
@@ -61,6 +81,7 @@ export default {
       if (this.newComment) {
         this.changeComment([this.index, this.newComment]);
       }
+      // this.subComment = false;
     }
   },
   // не работает
@@ -85,11 +106,12 @@ export default {
   &--input {
     outline: none;
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     margin: 10px 10px 10px 0;
     background: transparent;
     height: 30px;
     font-size: 24px;
+    padding-bottom: 5px;
   }
   &__card{
     &--close{
