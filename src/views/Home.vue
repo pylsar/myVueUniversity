@@ -6,25 +6,25 @@
         <div class="home__box__item">
           <Skills @click="clickHtml" :title="'html'" />
           <transition name="slide-fade">
-            <SkillsData v-show="htmlIsOpen" :nameOne="'html5'" :nameTwo="'семантическая верстка'"/>
+            <SkillsData v-show="htmlIsOpen" :nameOne="'html5'" :nameTwo="'семантическая верстка'" :nameThree="'адаптивная верстка'"/>
           </transition>  
         </div> 
         <div class="home__box__item">
           <Skills @click="clickCss" :title="'css'" />
           <transition name="slide-fade">
-            <SkillsData v-if="cssIsOpen" :nameOne="'css3'"/>
+            <SkillsData v-if="cssIsOpen" :nameOne="'css3'" :nameTwo="'scss'" :nameThree="'less'"/>
           </transition>  
         </div> 
         <div class="home__box__item"> 
           <Skills @click="clickJs" :title="'js'"/>
           <transition name="slide-fade">
-            <SkillsData v-if="jsIsOpen" :nameOne="'Vanilla Js'" :nameTwo="'Vue'"/>
+            <SkillsData v-if="jsIsOpen" :nameOne="'Vanilla Js'" :nameTwo="'Vue'" :nameThree="'React'" :nameFour="'JQuery'"/>
           </transition>  
         </div>
         <div class="home__box__item">  
           <Skills @click="clickDif" :title="'others'"/>
           <transition name="slide-fade">
-            <SkillsData v-if="difIsOpen" :nameOne="'git'" :nameTwo="'webpack'"/>
+            <SkillsData v-if="difIsOpen" :nameOne="'git'" :nameTwo="'webpack'" :nameThree="'Bitrix Framework'" :nameFour="'WordPress'" :nameFive="'Jira'"/>
           </transition>  
         </div>  
       </div>

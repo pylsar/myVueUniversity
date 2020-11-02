@@ -5,13 +5,15 @@
       <TheSidebar />
       <TheContent />
     </main>
+    <TheFooter />
   </div>
 </template>
 
 <script>
-  import TheHeader from '@/components/TheHeader.vue'
-  import TheSidebar from '@/components/TheSidebar.vue'
-  import TheContent from '@/components/TheContent.vue'
+  import TheHeader from '@/components/TheHeader.vue';
+  import TheSidebar from '@/components/TheSidebar.vue';
+  import TheContent from '@/components/TheContent.vue';
+  import TheFooter from '@/components/TheFooter.vue';
 
   export default {
     name: 'App',
@@ -19,6 +21,7 @@
       TheHeader,
       TheSidebar,
       TheContent,
+      TheFooter
     }
   }
 </script>

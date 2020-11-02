@@ -23,7 +23,7 @@
 <style lang="scss">
     .header{
         height: 70px;
-        width: 100vw;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;

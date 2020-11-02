@@ -97,6 +97,7 @@ export default {
 <style scoped lang="scss">
 .comment {
   &--input {
+    width: 100%;
     outline: none;
     border: none;
     border-bottom: 1px solid black;

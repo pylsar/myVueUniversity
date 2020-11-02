@@ -3,6 +3,9 @@
         <ul>
             <li>{{nameOne}}</li>
             <li>{{nameTwo}}</li>
+            <li>{{nameThree}}</li>
+            <li>{{nameFour}}</li>
+            <li>{{nameFive}}</li>
         </ul>
     </div>
 </template>    
@@ -17,6 +20,18 @@ export default{
         nameTwo: {
             type: String,
             default: ''
+        },
+        nameThree: {
+            type: String,
+            required: true
+        },
+        nameFour: {
+            type: String,
+            default: ''
+        },
+        nameFive: {
+            type: String,
+            required: true
         }
     },
 }
